@@ -36,7 +36,7 @@ public class WallVisibilitySwitcher : MonoBehaviour {
         Vector3 walkDirection = other.transform.position - transform.position;
 
         bool straightDirection = ((m_direction == SwitchDirection.SwitchDirection_UP
-            && Vector3.Angle(walkDirection, m_upDirection) < 90.0f)
+            && Vector3.Angle(walkDirection, -m_upDirection) < 90.0f)
             || (m_direction == SwitchDirection.SwitchDirection_RIGHT
             && Vector3.Angle(walkDirection, m_rightDirection) < 90.0f));
 

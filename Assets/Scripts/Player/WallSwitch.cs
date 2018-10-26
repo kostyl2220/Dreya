@@ -14,22 +14,24 @@ public class WallSwitch : Switcher {
         }
     }
 
-    new void SwitchOn() 
+    public override bool SwitchOn() 
     {
         if (!base.SwitchOn())
         {
-            return;
+            return false;
         }
         gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        return true;
     }
 
-    new void SwitchOff()
+    public override bool SwitchOff()
     {
         if (!base.SwitchOff())
         {
-            return;
+            return false;
         }
         gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, m_transparency);
+        return true;
     }
 
 	// Update is called once per frame

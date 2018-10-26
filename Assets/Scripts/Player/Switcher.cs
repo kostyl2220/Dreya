@@ -15,7 +15,7 @@ public class Switcher : MonoBehaviour {
 		
 	}
 
-    public bool SwitchOn()
+    public virtual bool SwitchOn()
     {
         if (m_switchValue)
         {
@@ -28,7 +28,7 @@ public class Switcher : MonoBehaviour {
         return true;
     }
 
-    public bool SwitchOff()
+    public virtual bool SwitchOff()
     {
         if (!m_switchValue)
         {
