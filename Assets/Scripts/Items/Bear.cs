@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bear : Pickable {
+public class Bear : Interactable
+{
 
     [SerializeField] private float m_decreaseFearValue;
 
 	// Use this for initialization
 	void Start () {
-		
+        m_pickable = true;
 	}
 
-    protected override void AddItemToPlayer(GameObject player)
+    protected override void InteractWithPlayer(GameObject player)
     {
         var fearable = player.GetComponent<Fearable>();
         if (fearable)

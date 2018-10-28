@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33444475619290094}
   - component: {fileID: 23114283369722902}
   - component: {fileID: 111914900001159608}
+  - component: {fileID: 65212135964993900}
   m_Layer: 0
   m_Name: piano_chair
   m_TagString: Untagged
@@ -37,6 +38,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4698845840622526}
+  - component: {fileID: 135046948575909328}
+  - component: {fileID: 114000624557439994}
   m_Layer: 0
   m_Name: PianoSet
   m_TagString: Untagged
@@ -55,6 +58,7 @@ GameObject:
   - component: {fileID: 33629358895735392}
   - component: {fileID: 23225480242605718}
   - component: {fileID: 111477564912876224}
+  - component: {fileID: 65492851857972540}
   m_Layer: 0
   m_Name: piano
   m_TagString: Untagged
@@ -69,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1104633925376740}
   m_LocalRotation: {x: -0.6674563, y: -0.23345688, z: -0.23345682, w: 0.6674563}
-  m_LocalPosition: {x: -3.044145, y: -6.6407857, z: 6.730614}
+  m_LocalPosition: {x: -0.167, y: -0.154, z: 0.051}
   m_LocalScale: {x: 35, y: 35.000015, z: 35.000015}
   m_Children: []
   m_Father: {fileID: 4698845840622526}
@@ -82,7 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1286160076714328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0638548, y: 8.059786, z: -6.486614}
+  m_LocalPosition: {x: -3.682, y: 1.575, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4442206136957698}
@@ -97,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1478971345745462}
   m_LocalRotation: {x: -0.22733416, y: 0.6728286, z: 0.6669733, w: 0.22531655}
-  m_LocalPosition: {x: -3.531145, y: -6.4837856, z: 7.3746142}
+  m_LocalPosition: {x: -0.671, y: 0.006, z: 0.716}
   m_LocalScale: {x: 0.50000024, y: 0.5000002, z: 0.5000001}
   m_Children: []
   m_Father: {fileID: 4698845840622526}
@@ -187,6 +191,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1478971345745462}
   m_Mesh: {fileID: 4300000, guid: 571f3cc6cf641c8498e3eae32bc2ee83, type: 3}
+--- !u!65 &65212135964993900
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1104633925376740}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.012610923, y: 0.0068167057, z: 0.010798553}
+  m_Center: {x: 0, y: -0.000000014901161, z: 0.000000007450581}
+--- !u!65 &65492851857972540
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1478971345745462}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1391413, y: 2.5219102, z: 1.4115884}
+  m_Center: {x: 0.016057367, y: 0.04048775, z: -0.0025248819}
 --- !u!111 &111477564912876224
 Animation:
   m_ObjectHideFlags: 1
@@ -215,3 +243,27 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114000624557439994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1286160076714328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e7819a901e83f42892a0face76812b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_pickable: 0
+--- !u!135 &135046948575909328
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1286160076714328}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.8
+  m_Center: {x: -0.26, y: 0.55, z: 0.14}

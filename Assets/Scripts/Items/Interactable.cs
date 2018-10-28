@@ -4,14 +4,11 @@ using UnityEngine;
 
 
 [RequireComponent(typeof(Collider))]
-public abstract class Pickable : MonoBehaviour {
+public abstract class Interactable : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    [SerializeField] protected bool m_pickable = false;
 
-    protected abstract void AddItemToPlayer(GameObject player);
+    protected abstract void InteractWithPlayer(GameObject player);
 
     private void OnTriggerStay(Collider collision)
     {
@@ -23,10 +20,18 @@ public abstract class Pickable : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("Pick item");
-            AddItemToPlayer(collision.gameObject);
+            InteractWithPlayer(collision.gameObject);
 
-            Destroy(gameObject);
+            if (ShouldDestroy())
+            {
+                Destroy(gameObject);
+            }
         }
+    }
+
+    protected virtual bool ShouldDestroy()
+    {
+        return m_pickable;
     }
 
     // Update is called once per frame

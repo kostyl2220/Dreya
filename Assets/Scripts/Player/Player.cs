@@ -8,11 +8,6 @@ public class Player : MonoBehaviour {
 	void Start () {
 		
 	}
-	
-    public void PickUp(Pickable pickable)
-    {
-
-    }
 
 	// Update is called once per frame
 	void Update () {
