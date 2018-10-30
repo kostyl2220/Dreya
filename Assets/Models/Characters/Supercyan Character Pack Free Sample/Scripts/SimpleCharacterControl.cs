@@ -31,6 +31,7 @@ public class SimpleCharacterControl : MonoBehaviour {
     private float m_jumpTimeStamp = 0;
     private float m_minJumpInterval = 0.25f;
 
+    private bool m_isWalking;
     private bool m_isGrounded;
     private List<Collider> m_collisions = new List<Collider>();
 
@@ -134,6 +135,16 @@ public class SimpleCharacterControl : MonoBehaviour {
         JumpingAndLanding();
     }
 
+    public bool IsGrounded()
+    {
+        return m_isGrounded;
+    }
+
+    public bool IsWalking()
+    {
+        return m_isWalking;
+    }
+
     private void DirectUpdate()
     {
         float v = Input.GetAxis("Vertical");
@@ -141,7 +152,8 @@ public class SimpleCharacterControl : MonoBehaviour {
 
         Transform camera = Camera.main.transform;
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        m_isWalking = Input.GetKey(KeyCode.LeftShift);
+        if (m_isWalking)
         {
             v *= m_walkScale;
             h *= m_walkScale;
@@ -167,6 +179,12 @@ public class SimpleCharacterControl : MonoBehaviour {
         }
 
         JumpingAndLanding();
+    }
+
+    public void PickUp()
+    {
+        m_animator.SetBool("pickup", true);
+        m_animator.SetTrigger("PickUp");
     }
 
     private void JumpingAndLanding()

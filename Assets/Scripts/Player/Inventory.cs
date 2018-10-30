@@ -27,10 +27,9 @@ public struct Protection
 public class Inventory : MonoBehaviour {
 
     [SerializeField]
-    private Vector3 [] m_dressPoses = new Vector3[(int)Dress.DressType.DressType_Count];
+    private Transform [] m_dressPoses = new Transform[(int)Dress.DressType.DressType_Count];
 
     private Protection m_generalProtection;
-    private bool m_reevaluateProtection;
 
     private List<Item> m_items;
     private Dress [] m_dresses;
@@ -39,7 +38,6 @@ public class Inventory : MonoBehaviour {
     {
         m_items = new List<Item>();
         m_dresses = new Dress[(int)Dress.DressType.DressType_Count];
-        m_reevaluateProtection = true;
     }
 
     public void DressItem(Dress item)
@@ -54,8 +52,9 @@ public class Inventory : MonoBehaviour {
             RemoveProtection(m_dresses[itemId].GetProtection());
             m_dresses[itemId].gameObject.SetActive(false);
         }
-        item.gameObject.transform.rotation = transform.rotation;
-        item.gameObject.transform.position = transform.position + m_dressPoses[itemId];      
+        item.gameObject.transform.SetParent( m_dressPoses[itemId]);
+        item.gameObject.transform.position = m_dressPoses[itemId].position;
+        item.gameObject.transform.rotation = m_dressPoses[itemId].rotation;
         item.gameObject.SetActive(true);
         m_dresses[itemId] = item;
         AddProtection(item.GetProtection());

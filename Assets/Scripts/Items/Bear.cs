@@ -2,17 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bear : Interactable
+public class Bear : Pickable
 {
 
     [SerializeField] private float m_decreaseFearValue;
 
-	// Use this for initialization
-	void Start () {
-        m_pickable = true;
-	}
-
-    protected override void InteractWithPlayer(GameObject player)
+    protected override void PickedByPlayer(GameObject player)
     {
         var fearable = player.GetComponent<Fearable>();
         if (fearable)
@@ -20,9 +15,4 @@ public class Bear : Interactable
             fearable.ChangeFear(-m_decreaseFearValue);
         }
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

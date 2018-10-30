@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : Interactable {
+public class Item : Pickable {
 
-    protected override void InteractWithPlayer(GameObject player)
+    protected override void PickedByPlayer(GameObject player)
     {
         Inventory inventory = player.GetComponent<Inventory>();
         if (inventory)
         {
             inventory.PickItem(this);
         }
+    }
+
+    protected override bool ShouldDestroyAfterInteraction()
+    {
+        return false;
     }
 }

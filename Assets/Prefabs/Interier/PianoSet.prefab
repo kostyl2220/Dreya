@@ -254,7 +254,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33e7819a901e83f42892a0face76812b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pickable: 0
+  m_sounds:
+  - {fileID: 8300000, guid: 2c46340b3cdc88f49ab2a944d9289471, type: 3}
+  - {fileID: 8300000, guid: 70631f28c4463b344913fd16ca8d42ba, type: 3}
+  - {fileID: 8300000, guid: c2e48cfa2fc708b43b64b1e4302cd15f, type: 3}
+  - {fileID: 8300000, guid: 702e938c04e6a514d84a2075272d851e, type: 3}
+  m_cooldown: 3
 --- !u!135 &135046948575909328
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -6,8 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public abstract class Interactable : MonoBehaviour {
 
-    [SerializeField] protected bool m_pickable = false;
-
     protected abstract void InteractWithPlayer(GameObject player);
 
     private void OnTriggerStay(Collider collision)
@@ -22,16 +20,16 @@ public abstract class Interactable : MonoBehaviour {
             Debug.Log("Pick item");
             InteractWithPlayer(collision.gameObject);
 
-            if (ShouldDestroy())
+            if (ShouldDestroyAfterInteraction())
             {
                 Destroy(gameObject);
             }
         }
     }
 
-    protected virtual bool ShouldDestroy()
+    protected virtual bool ShouldDestroyAfterInteraction()
     {
-        return m_pickable;
+        return false;
     }
 
     // Update is called once per frame
