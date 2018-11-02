@@ -2,42 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Switcher : MonoBehaviour {
+public abstract class Switcher : MonoBehaviour {
     [SerializeField] protected bool m_switchValue;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    protected abstract void Switched();
 
-    public virtual bool SwitchOn()
+    void Start()
     {
-        if (m_switchValue)
+        Switched();
+    }
+
+    public void Switch()
+    {
+        m_switchValue = !m_switchValue;
+        Switched();
+    }
+
+    public bool SwitchOn()
+    {
+        Debug.Log("SwitchOn");
+        return ForceSwitch(true);
+    }
+
+    public bool ForceSwitch(bool value)
+    {
+        if (m_switchValue == value)
         {
             return false;
-        }
-        Debug.Log("SwitchOn");
-
-        m_switchValue = true;
-
+        }      
+        m_switchValue = value;
+        Switched();
         return true;
     }
 
-    public virtual bool SwitchOff()
+    public bool SwitchOff()
     {
-        if (!m_switchValue)
-        {
-            return false;
-        }
         Debug.Log("SwitchOff");
-
-        m_switchValue = false;
-
-        return true;
+        return ForceSwitch(false);
     }
 }

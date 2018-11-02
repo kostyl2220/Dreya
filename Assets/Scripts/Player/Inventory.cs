@@ -97,6 +97,21 @@ public class Inventory : MonoBehaviour {
         m_generalProtection -= protection;
     }
 
+    public List<Item> GetAllItems()
+    {
+        return m_items;
+    }
+
+    public void ConsumeItem(Item item)
+    {
+        m_items.Remove(item);
+    }
+
+    public bool AllItemsExists(List<Item> items)
+    {
+        return items.TrueForAll((Item i) => { return m_items.Contains(i); });
+    }
+
     // Update is called once per frame
     void Update () {
 		if (Input.GetKeyDown(KeyCode.Alpha1))
