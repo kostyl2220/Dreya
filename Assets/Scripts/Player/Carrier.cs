@@ -33,18 +33,18 @@ public class Carrier : MonoBehaviour {
             return;
         }
 
-        /*if (GetDistanceToCarriable() > m_distance + EPSILON)
+        if (GetDistanceToCarriable() > m_distance + EPSILON)
         {
             ResetCariable();
             return;
-        }*/
+        }
 
-        /*RaycastHit hit;
+        RaycastHit hit;
         if (Physics.Linecast(transform.position, m_carriableItem.transform.position, out hit, LayerMask.NameToLayer("Player")))
         {
             ResetCariable();
             return; 
-        }*/
+        }
 
         if (!(m_scc.IsGrounded() && m_scc.IsWalking()))
         {
