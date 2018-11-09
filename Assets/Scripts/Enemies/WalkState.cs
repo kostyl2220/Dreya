@@ -3,20 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class WalkState : SimpleBrainState {
+public class WalkState : WanderState {
     static float EPSILON = 0.000001f;
 
-    [SerializeField] private SimpleBrain.MinMaxRange m_walkRadius;
-    [SerializeField] private SimpleBrain.MinMaxRange m_waitTime;
+    [SerializeField] private SimpleBrain.MinMaxRange m_walkRadius = new SimpleBrain.MinMaxRange(2.0f, 5.0f);
+    [SerializeField] private SimpleBrain.MinMaxRange m_waitTime = new SimpleBrain.MinMaxRange(0.5f, 2.0f);
 
-    private DecisionState m_decisionState;
     private bool m_reachedPos;
-    protected override void Finalized()
-    {
-        m_decisionState = GetComponent<DecisionState>();
-    }
 
-    protected override void Setup()
+    public override void Setup()
     {
         m_reachedPos = false;
         m_parent.m_agent.destination = RandomNavmeshLocation(m_walkRadius.GetInRange());
@@ -40,7 +35,7 @@ public class WalkState : SimpleBrainState {
         return m_parent.m_agent.remainingDistance < EPSILON;
     }
 
-    public override bool UpdateState()
+    protected override bool InnerUpdateState()
     {
         if (!m_reachedPos)
         {
@@ -56,7 +51,6 @@ public class WalkState : SimpleBrainState {
             return false;
         }
 
-        SetNewState(m_decisionState);
-        return true;
+        return SetNewState(m_decisionState);
     }
 }

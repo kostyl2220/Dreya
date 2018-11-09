@@ -4826,6 +4826,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114938962814828190, guid: 0e74cf81e6fd82546b4797f71ceffb81,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114057854679118656, guid: 0e74cf81e6fd82546b4797f71ceffb81,
+        type: 2}
+      propertyPath: m_initFear
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e74cf81e6fd82546b4797f71ceffb81, type: 2}
   m_IsPrefabAsset: 0
@@ -6342,6 +6352,11 @@ Prefab:
       propertyPath: m_Name
       value: Scarecrow (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114612066666032054, guid: ce592318a9125924fb2b70061cc55b5c,
+        type: 2}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 39769691}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce592318a9125924fb2b70061cc55b5c, type: 2}
   m_IsPrefabAsset: 0
@@ -8804,6 +8819,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114884919491771646, guid: ce592318a9125924fb2b70061cc55b5c,
+        type: 2}
+      propertyPath: m_chances.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4504382749575608, guid: ce592318a9125924fb2b70061cc55b5c, type: 2}
       propertyPath: m_LocalPosition.x
       value: -20.285
@@ -8836,6 +8856,41 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114884919491771646, guid: ce592318a9125924fb2b70061cc55b5c,
+        type: 2}
+      propertyPath: m_chances.Array.data[2].state
+      value: 
+      objectReference: {fileID: 1521877258}
+    - target: {fileID: 114884919491771646, guid: ce592318a9125924fb2b70061cc55b5c,
+        type: 2}
+      propertyPath: m_chances.Array.data[2].chance
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884919491771646, guid: ce592318a9125924fb2b70061cc55b5c,
+        type: 2}
+      propertyPath: m_chances.Array.data[1].chance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884919491771646, guid: ce592318a9125924fb2b70061cc55b5c,
+        type: 2}
+      propertyPath: m_chances.Array.data[0].chance
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 114884919491771646, guid: ce592318a9125924fb2b70061cc55b5c,
+        type: 2}
+      propertyPath: m_chances.Array.data[1].state
+      value: 
+      objectReference: {fileID: 1521877259}
+    - target: {fileID: 114884919491771646, guid: ce592318a9125924fb2b70061cc55b5c,
+        type: 2}
+      propertyPath: m_chances.Array.data[0].state
+      value: 
+      objectReference: {fileID: 1521877258}
+    - target: {fileID: 114612066666032054, guid: ce592318a9125924fb2b70061cc55b5c,
+        type: 2}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 39769691}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce592318a9125924fb2b70061cc55b5c, type: 2}
   m_IsPrefabAsset: 0
@@ -15121,6 +15176,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1521877258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114168111753049540, guid: ce592318a9125924fb2b70061cc55b5c,
+    type: 2}
+  m_PrefabInternal: {fileID: 831689971}
+  m_Script: {fileID: 11500000, guid: 05ee1a3f855ea2f428c224ea63d08e07, type: 3}
+--- !u!114 &1521877259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114833384049524052, guid: ce592318a9125924fb2b70061cc55b5c,
+    type: 2}
+  m_PrefabInternal: {fileID: 831689971}
+  m_Script: {fileID: 11500000, guid: c1c2c83388ba9444da3294be529bd616, type: 3}
 --- !u!1001 &1521934028
 Prefab:
   m_ObjectHideFlags: 0
@@ -15160,6 +15227,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114612066666032054, guid: ce592318a9125924fb2b70061cc55b5c,
+        type: 2}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 39769691}
     - target: {fileID: 1000033155238416, guid: ce592318a9125924fb2b70061cc55b5c, type: 2}
       propertyPath: m_Name
       value: Scarecrow (2)

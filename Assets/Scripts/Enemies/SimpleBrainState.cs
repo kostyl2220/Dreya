@@ -8,7 +8,7 @@ public abstract class SimpleBrainState : MonoBehaviour
     public abstract bool UpdateState();
 
     //Runs every time, when you gets into this node
-    protected abstract void Setup();
+    public abstract void Setup();
 
     //Runs only once, when stage is loaded
     protected abstract void Finalized();
@@ -19,9 +19,17 @@ public abstract class SimpleBrainState : MonoBehaviour
         Finalized();
     }
 
-    protected void SetNewState(SimpleBrainState state)
+    protected bool SetNewState(SimpleBrainState state)
     {
-        state.Setup();
-        m_parent.SetState(state);
+        if (state)
+        {
+            m_parent.SetState(state);
+            return true;
+        }
+        else
+        {
+            Setup();
+            return false;
+        }
     }
 }

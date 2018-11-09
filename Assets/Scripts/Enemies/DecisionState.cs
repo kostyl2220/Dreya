@@ -26,7 +26,7 @@ public class DecisionState : SimpleBrainState {
         return true;
     }
 
-    protected override void Setup()
+    public override void Setup()
     {
 
     }

@@ -24,6 +24,9 @@ GameObject:
   - component: {fileID: 114293411761819648}
   - component: {fileID: 114884919491771646}
   - component: {fileID: 114833384049524052}
+  - component: {fileID: 114168111753049540}
+  - component: {fileID: 114895141782617140}
+  - component: {fileID: 114783118036762196}
   m_Layer: 0
   m_Name: Scarecrow
   m_TagString: Untagged
@@ -1109,6 +1112,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114168111753049540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000033155238416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ee1a3f855ea2f428c224ea63d08e07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_countOfRotations:
+    min: 2
+    max: 6
+  m_angle:
+    min: 15
+    max: 78
+  m_rotationSpeed: 40
 --- !u!114 &114293411761819648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1134,7 +1155,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66bb76f19fe57904ab7b3d05e3f8c437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_player: {fileID: 0}
+  m_range: 4
+  m_lookAngle: 30
   m_startupState: {fileID: 114293411761819648}
+--- !u!114 &114783118036762196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000033155238416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816c16c442ae9aa4f8e0059acc0b42df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_pathUpdateTime: 0.2
+  m_passiveFearDamage: 1.5
+  m_contactDamage: 20
+  m_AttackDistance:
+    min: 0.2
+    max: 1
 --- !u!114 &114833384049524052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1148,10 +1189,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_walkRadius:
     min: 2
-    max: 7
+    max: 5
   m_waitTime:
-    min: 0.5
-    max: 2
+    min: 0.8
+    max: 2.5
 --- !u!114 &114884919491771646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1168,6 +1209,21 @@ MonoBehaviour:
     chance: 40
   - state: {fileID: 114833384049524052}
     chance: 60
+  - state: {fileID: 114168111753049540}
+    chance: 50
+--- !u!114 &114895141782617140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000033155238416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8bf7e6703b677c4c874d3e033f56323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_pathUpdateTime: 0.2
+  m_endToPlayerDistance: 1
 --- !u!137 &137621061993555174
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

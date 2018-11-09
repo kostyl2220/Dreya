@@ -2,27 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IdleState : SimpleBrainState {
+public class IdleState : WanderState {
 
-    [SerializeField] private SimpleBrain.MinMaxRange m_waitTime;
-    private DecisionState m_decisionState;
+    [SerializeField] private SimpleBrain.MinMaxRange m_waitTime = new SimpleBrain.MinMaxRange(1.0f, 2.2f);
 
-    public override bool UpdateState()
+    protected override bool InnerUpdateState()
     {
         if (Time.time < m_parent.m_endActionTime)
         {
             return false;
         }
-        SetNewState(m_decisionState);
-        return true;
+        return SetNewState(m_decisionState);
     }
 
-    protected override void Finalized()
-    {
-        m_decisionState = GetComponent<DecisionState>();
-    }
-
-    protected override void Setup()
+    public override void Setup()
     {
         m_parent.m_endActionTime = Time.time + m_waitTime.GetInRange();
     }
