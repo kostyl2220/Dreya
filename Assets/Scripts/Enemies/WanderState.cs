@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class WanderState : SimpleBrainState {
 
-    protected DecisionState m_decisionState;
-    protected ChasingState m_chasingState;
+    protected SimpleBrainState m_decisionState;
+    protected SimpleBrainState m_chasingState;
 
     protected abstract bool InnerUpdateState();
 

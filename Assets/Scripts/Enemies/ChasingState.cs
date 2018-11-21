@@ -7,8 +7,8 @@ public class ChasingState : FollowState
 
     [SerializeField] private float m_endToPlayerDistance;
 
-    private DecisionState m_searchingState;
-    private AttackState m_attackState;
+    private SimpleBrainState m_searchingState;
+    private SimpleBrainState m_attackState;
 
     public override bool UpdateState()
     {

@@ -9,7 +9,7 @@ public class AttackState : FollowState
     [SerializeField] private SimpleBrain.MinMaxRange m_AttackDistance = new SimpleBrain.MinMaxRange( 0.2f, 1.0f );
     //[SerializeField] private float 
 
-    private ChasingState m_chasingState;
+    private SimpleBrainState m_chasingState;
     public override void Setup()
     {
         m_chasingState = GetComponent<ChasingState>();

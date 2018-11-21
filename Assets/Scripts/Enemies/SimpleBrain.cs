@@ -28,7 +28,7 @@ public class SimpleBrain : MonoBehaviour {
     }
 
     [SerializeField] public GameObject m_player;
-    [SerializeField] private float m_range;
+    [SerializeField] private float m_rangeKoef = 0.4f;
     [SerializeField] private float m_lookAngle;
     [SerializeField] private SimpleBrainState m_startupState;
 
@@ -59,7 +59,8 @@ public class SimpleBrain : MonoBehaviour {
 
     public bool SeePlayer()
     {
-        if (Vector3.Distance(m_player.transform.position, transform.position) > m_range)
+        PlayerLightController plc = m_player.GetComponent<PlayerLightController>();
+        if (Vector3.Distance(m_player.transform.position, transform.position) > m_rangeKoef * plc.GetCurrentIntensity())
         {
             return false;
         }
@@ -70,6 +71,15 @@ public class SimpleBrain : MonoBehaviour {
         }
 
         //TODO check on dirrect looking
+        Debug.Log("I see you!");
+
         return true;
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        PlayerLightController plc = m_player.GetComponent<PlayerLightController>();
+        Gizmos.DrawWireSphere(transform.position, m_rangeKoef * plc.GetCurrentIntensity());
     }
 }
