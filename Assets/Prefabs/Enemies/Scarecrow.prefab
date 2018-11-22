@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114168111753049540}
   - component: {fileID: 114895141782617140}
   - component: {fileID: 114783118036762196}
+  - component: {fileID: 114974524866112726}
+  - component: {fileID: 114552536777729562}
   m_Layer: 0
   m_Name: Scarecrow
   m_TagString: Untagged
@@ -779,8 +781,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000033155238416}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.400703, y: 1.2365289, z: -17.218374}
+  m_LocalRotation: {x: -0.40821788, y: 0.23456968, z: -0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: -27.024443, y: -8.241833, z: -4.6136713}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4574840076396170}
@@ -1144,6 +1146,17 @@ MonoBehaviour:
   m_waitTime:
     min: 1
     max: 3
+--- !u!114 &114552536777729562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000033155238416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96c94647933d044a9c178eb722acaff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114612066666032054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1156,9 +1169,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
-  m_range: 4
-  m_lookAngle: 30
+  m_rangeKoef: 0.4
+  m_lookAngle: 60
   m_startupState: {fileID: 114293411761819648}
+  m_enableDebug: 0
 --- !u!114 &114783118036762196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1190,9 +1204,6 @@ MonoBehaviour:
   m_walkRadius:
     min: 2
     max: 5
-  m_waitTime:
-    min: 0.8
-    max: 2.5
 --- !u!114 &114884919491771646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1206,11 +1217,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_chances:
   - state: {fileID: 114293411761819648}
-    chance: 40
+    chance: 0.26666668
   - state: {fileID: 114833384049524052}
-    chance: 60
+    chance: 0.4
   - state: {fileID: 114168111753049540}
-    chance: 50
+    chance: 0.33333334
+  m_searchTime: 5
 --- !u!114 &114895141782617140
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1224,6 +1236,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pathUpdateTime: 0.2
   m_endToPlayerDistance: 1
+--- !u!114 &114974524866112726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000033155238416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94a08bbf24a24354f992a9a1530cf2a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137621061993555174
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

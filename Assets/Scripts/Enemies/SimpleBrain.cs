@@ -32,12 +32,13 @@ public class SimpleBrain : MonoBehaviour {
     [SerializeField] private float m_lookAngle;
     [SerializeField] private SimpleBrainState m_startupState;
 
+    [SerializeField] public bool m_enableDebug;
+
     private SimpleBrainState m_currentState;
-    public float m_endActionTime { get; set; }
     public NavMeshAgent m_agent { get; private set; }
 
-	void Start () {
-        m_endActionTime = -1;
+	void Start ()
+    {
         m_agent = GetComponent<NavMeshAgent>();
         if (m_agent)
         {
@@ -55,6 +56,10 @@ public class SimpleBrain : MonoBehaviour {
     {
         m_currentState = state;
         m_currentState.Setup();
+        if (m_enableDebug)
+        {
+            Debug.Log(m_currentState.GetStateName());
+        }
     }
 
     public bool SeePlayer()
@@ -71,7 +76,7 @@ public class SimpleBrain : MonoBehaviour {
         }
 
         //TODO check on dirrect looking
-        Debug.Log("I see you!");
+        //Debug.Log("I see you!");
 
         return true;
     }

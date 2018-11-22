@@ -26,7 +26,7 @@ public class PlayerLightController : MonoBehaviour {
         {
             m_lastUpdateTime = Time.time + m_lightUpdateTime;
             m_currentLightIntensity = m_lightManager.CalculateLightIntensity(gameObject);
-            Debug.Log("Current light intensity: " + m_currentLightIntensity);
+            //Debug.Log("Current light intensity: " + m_currentLightIntensity);
         }
 	}
 

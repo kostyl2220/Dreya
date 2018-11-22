@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class RotationState : WanderState {
 
-    static float EPSILON = 0.0001f;
-
     [SerializeField] private SimpleBrain.MinMaxRange m_countOfRotations = new SimpleBrain.MinMaxRange(2.0f, 6.0f);
     [SerializeField] private SimpleBrain.MinMaxRange m_angle = new SimpleBrain.MinMaxRange(15.0f, 78.0f);
     [SerializeField] private float m_rotationSpeed = 40.0f;
@@ -16,6 +14,11 @@ public class RotationState : WanderState {
     private int m_currentCountOfRotations;
     private Quaternion m_startAngle;
     private Quaternion m_endAngle;
+
+    public override string GetStateName()
+    {
+        return "RotationState";
+    }
 
     protected override bool InnerUpdateState()
     {

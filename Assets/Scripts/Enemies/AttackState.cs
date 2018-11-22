@@ -10,21 +10,27 @@ public class AttackState : FollowState
     //[SerializeField] private float 
 
     private SimpleBrainState m_chasingState;
+
+    public override string GetStateName()
+    {
+        return "AttackState";
+    }
+
     public override void Setup()
     {
-        m_chasingState = GetComponent<ChasingState>();
+
     }
 
     public override bool UpdateState()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, m_parent.m_player.transform.position);
 
-        if (distanceToPlayer > m_AttackDistance.max
-            || distanceToPlayer < EPSILON && !m_parent.SeePlayer())
+        if (!m_parent.SeePlayer() || distanceToPlayer > m_AttackDistance.max)
         {
             return SetNewState(m_chasingState);
         }
-
+      
+        //not on max close distance
         if (distanceToPlayer > m_AttackDistance.min)
         {
             ShouldUpdatePath();
@@ -35,11 +41,11 @@ public class AttackState : FollowState
         if (fearable)
         {
             float distancePersentage = 1.0f - distanceToPlayer / m_AttackDistance.max;
-            float fear = m_passiveFearDamage * Time.deltaTime * Mathf.Pow(m_passiveFearDamage, 2);
+            float fear = distancePersentage * Time.deltaTime * Mathf.Pow(m_passiveFearDamage, 2);
             fearable.ChangeFear(fear);
         }
 
-        return false;
+        return false;      
     }
 
     protected override void Finalized()

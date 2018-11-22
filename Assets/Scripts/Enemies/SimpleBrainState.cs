@@ -4,7 +4,13 @@ using UnityEngine;
 
 public abstract class SimpleBrainState : MonoBehaviour
 {
+    static protected float EPSILON = 0.000001f;
+
+    public abstract string GetStateName();
+
     protected SimpleBrain m_parent;
+
+    //instead of Update use this
     public abstract bool UpdateState();
 
     //Runs every time, when you gets into this node
@@ -21,15 +27,7 @@ public abstract class SimpleBrainState : MonoBehaviour
 
     protected bool SetNewState(SimpleBrainState state)
     {
-        if (state)
-        {
-            m_parent.SetState(state);
-            return true;
-        }
-        else
-        {
-            Setup();
-            return false;
-        }
+        m_parent.SetState(state ? state : this);
+        return state;
     }
 }

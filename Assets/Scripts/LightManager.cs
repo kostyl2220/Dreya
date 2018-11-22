@@ -57,10 +57,11 @@ public class LightManager : MonoBehaviour {
             float maxRadius = Mathf.Tan(Mathf.Deg2Rad * maxAngle); 
             float targetRadius = Mathf.Tan(Mathf.Deg2Rad * targetAngle);
 
-            endIntensity += CalculateIntensityMultiplier(frontDistance, light.range, targetRadius, maxRadius) * light.intensity;
+            float addedIntensity = CalculateIntensityMultiplier(frontDistance, light.range, targetRadius, maxRadius) * light.intensity;
+            endIntensity += Mathf.Pow(addedIntensity, 2);
         }
 
-        return endIntensity;
+        return Mathf.Sqrt(endIntensity);
     }
 
 	// Use this for initialization

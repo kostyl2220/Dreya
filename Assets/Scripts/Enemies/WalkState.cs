@@ -4,16 +4,24 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class WalkState : WanderState {
-    static float EPSILON = 0.000001f;
 
     [SerializeField] private SimpleBrain.MinMaxRange m_walkRadius = new SimpleBrain.MinMaxRange(2.0f, 5.0f);
-    [SerializeField] private SimpleBrain.MinMaxRange m_waitTime = new SimpleBrain.MinMaxRange(0.5f, 2.0f);
 
     private bool m_reachedPos;
 
+    public override string GetStateName()
+    {
+        return "WalkState";
+    }
+
+    protected override void Finalized()
+    {
+        m_chasingState = GetComponent<ReturnState>();
+        m_decisionState = GetComponent<IdleState>();
+    }
+
     public override void Setup()
     {
-        m_reachedPos = false;
         m_parent.m_agent.destination = RandomNavmeshLocation(m_walkRadius.GetInRange());
     }
 
@@ -30,27 +38,8 @@ public class WalkState : WanderState {
         return finalPosition;
     }
 
-    private bool ReachedPosition()
-    {
-        return m_parent.m_agent.remainingDistance < EPSILON;
-    }
-
     protected override bool InnerUpdateState()
     {
-        if (!m_reachedPos)
-        {
-            if (!ReachedPosition())
-            {
-                return false;
-            }
-            m_reachedPos = true;
-            m_parent.m_endActionTime = Time.time + m_waitTime.GetInRange();
-        }
-        if (Time.time < m_parent.m_endActionTime)
-        {
-            return false;
-        }
-
-        return SetNewState(m_decisionState);
+        return m_parent.m_agent.remainingDistance > EPSILON ? false : SetNewState(m_decisionState);
     }
 }

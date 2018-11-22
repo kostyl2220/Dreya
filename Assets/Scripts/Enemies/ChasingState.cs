@@ -4,39 +4,32 @@ using UnityEngine;
 
 public class ChasingState : FollowState
 {
-
     [SerializeField] private float m_endToPlayerDistance;
 
     private SimpleBrainState m_searchingState;
     private SimpleBrainState m_attackState;
 
+    public override string GetStateName()
+    {
+        return "ChasingState";
+    }
+
     public override bool UpdateState()
     {
-        ShouldUpdatePath();
-
-        float distanceToPlayer = Vector3.Distance(m_parent.m_agent.destination, transform.position);
-
-        if (distanceToPlayer > m_endToPlayerDistance)
-        {
-            return false;
-        }
+        float distanceToTarget = m_parent.m_agent.remainingDistance;
 
         if (m_parent.SeePlayer())
         {
-            return SetNewState(m_attackState);
+            ShouldUpdatePath();
+            return distanceToTarget > m_endToPlayerDistance ? false : SetNewState(m_attackState);
         }
 
-        if (distanceToPlayer > EPSILON)
-        {
-            return false;
-        }
-
-        return SetNewState(m_searchingState);
+        return distanceToTarget > EPSILON ? false : SetNewState(m_searchingState);
     }
 
     protected override void Finalized()
     {
-        m_searchingState = GetComponent<DecisionState>();
+        m_searchingState = GetComponent<SearchingState>();
         m_attackState = GetComponent<AttackState>();
     }
 }

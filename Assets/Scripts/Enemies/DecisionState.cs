@@ -19,21 +19,48 @@ public class DecisionState : SimpleBrainState {
     }
 
     [SerializeField] private List<StateChance> m_chances;
+    [SerializeField] private float m_searchTime = 5.0f;
+
+    private SimpleBrainState m_returnState;
+
+    private float m_lastUpdateTime;
+    private bool m_searching;
+
+    public override string GetStateName()
+    {
+        return "DecisionState";
+    }
 
     public override bool UpdateState()
     {
-       SetNewState(GetNextRandomAIState());
-        return true;
+        if (m_searching && Time.deltaTime > m_lastUpdateTime)
+        {
+            m_searching = false;
+            return SetNewState(m_returnState);
+        }
+        return SetNewState(GetNextRandomAIState());
+    }
+
+    public void SetSearch()
+    {
+        m_searching = true;
     }
 
     public override void Setup()
     {
-
+        if (m_searching)
+        {
+            m_lastUpdateTime = Time.time + m_searchTime;
+        }
     }
 
     protected override void Finalized()
     {
         NormalizeChances();
+        if (!m_returnState)
+        {
+            m_returnState = GetComponent<ReturnState>();
+        }
     }
 
     SimpleBrainState GetNextRandomAIState()

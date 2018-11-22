@@ -7,6 +7,13 @@ public abstract class WanderState : SimpleBrainState {
     protected SimpleBrainState m_decisionState;
     protected SimpleBrainState m_chasingState;
 
+    protected float m_endActionTime;
+
+    public void SetNextDecisionState(SimpleBrainState nextState)
+    {
+        m_decisionState = nextState;
+    }
+
     protected abstract bool InnerUpdateState();
 
     public override bool UpdateState()
@@ -22,6 +29,6 @@ public abstract class WanderState : SimpleBrainState {
     protected override void Finalized()
     {
         m_decisionState = GetComponent<DecisionState>();
-        m_chasingState = GetComponent<ChasingState>();
+        m_chasingState = GetComponent<ReturnState>();
     }
 }
