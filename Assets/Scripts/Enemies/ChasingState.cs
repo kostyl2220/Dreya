@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChasingState : FollowState
 {
-    [SerializeField] private float m_endToPlayerDistance;
+    [SerializeField] private float m_endToPlayerDistance = 1.0f;
 
     private SimpleBrainState m_searchingState;
     private SimpleBrainState m_attackState;
@@ -16,7 +16,7 @@ public class ChasingState : FollowState
 
     public override bool UpdateState()
     {
-        float distanceToTarget = m_parent.m_agent.remainingDistance;
+        float distanceToTarget = m_parent.GetAgentRemainingDistance();
 
         if (m_parent.SeePlayer())
         {

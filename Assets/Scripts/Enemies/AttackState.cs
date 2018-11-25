@@ -5,10 +5,13 @@ using UnityEngine;
 public class AttackState : FollowState
 {
     [SerializeField] private float m_passiveFearDamage = 3.0f;
-    [SerializeField] private float m_contactDamage = 20.0f;
+    [SerializeField] private float m_contactDamage = 8.0f;
+    [SerializeField] private float m_cooldown = 1.0f;
+    [SerializeField] private float m_contactAttackDistance = 0.3f;
     [SerializeField] private SimpleBrain.MinMaxRange m_AttackDistance = new SimpleBrain.MinMaxRange( 0.2f, 1.0f );
     //[SerializeField] private float 
 
+    private float m_attackCooldownTime;
     private SimpleBrainState m_chasingState;
 
     public override string GetStateName()
@@ -36,13 +39,21 @@ public class AttackState : FollowState
             ShouldUpdatePath();
         }
 
-        // perform passive damage
+        
         Fearable fearable = m_parent.m_player.GetComponent<Fearable>();
         if (fearable)
         {
+            // perform passive damage
             float distancePersentage = 1.0f - distanceToPlayer / m_AttackDistance.max;
             float fear = distancePersentage * Time.deltaTime * Mathf.Pow(m_passiveFearDamage, 2);
             fearable.ChangeFear(fear);
+
+            // perform active damage
+            if (distanceToPlayer < m_contactAttackDistance && m_attackCooldownTime > Time.time)
+            {
+                m_attackCooldownTime = Time.time + m_cooldown;
+                fearable.ChangeFear(m_contactDamage);
+            }
         }
 
         return false;      
@@ -51,5 +62,6 @@ public class AttackState : FollowState
     protected override void Finalized()
     {
         m_chasingState = GetComponent<ChasingState>();
+        m_attackCooldownTime = 0.0f;
     }
 }

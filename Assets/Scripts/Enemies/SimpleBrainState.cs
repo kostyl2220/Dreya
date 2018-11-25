@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class SimpleBrainState : MonoBehaviour
 {
-    static protected float EPSILON = 0.000001f;
+    static protected float EPSILON = 0.0001f;
 
     public abstract string GetStateName();
 

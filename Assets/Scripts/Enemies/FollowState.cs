@@ -14,7 +14,7 @@ public abstract class FollowState : SimpleBrainState
 
         if (m_parent.SeePlayer())
         {
-            m_parent.m_agent.destination = m_parent.m_player.transform.position;
+            m_parent.SetNewMovePosition(m_parent.m_player.transform.position);
         }
     }
 
@@ -26,6 +26,7 @@ public abstract class FollowState : SimpleBrainState
         }
 
         m_lastUpdateTime = Time.time + m_pathUpdateTime;
-        m_parent.m_agent.destination = m_parent.m_player.transform.position;
+        m_parent.SetNewMovePosition(m_parent.m_player.transform.position);
+        m_parent.m_lastPlayerMoveDirection = m_parent.transform.forward;
     }
 }

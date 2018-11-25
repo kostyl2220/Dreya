@@ -33,7 +33,7 @@ public class DecisionState : SimpleBrainState {
 
     public override bool UpdateState()
     {
-        if (m_searching && Time.deltaTime > m_lastUpdateTime)
+        if (m_searching && Time.time > m_lastUpdateTime)
         {
             m_searching = false;
             return SetNewState(m_returnState);
@@ -44,14 +44,12 @@ public class DecisionState : SimpleBrainState {
     public void SetSearch()
     {
         m_searching = true;
+        m_lastUpdateTime = Time.time + m_searchTime;
     }
 
     public override void Setup()
     {
-        if (m_searching)
-        {
-            m_lastUpdateTime = Time.time + m_searchTime;
-        }
+
     }
 
     protected override void Finalized()

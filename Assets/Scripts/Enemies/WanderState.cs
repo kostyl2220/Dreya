@@ -20,6 +20,7 @@ public abstract class WanderState : SimpleBrainState {
     {
         if (m_parent.SeePlayer())
         {
+            m_parent.SetAgressive(true);
             return SetNewState(m_chasingState);
         }
 

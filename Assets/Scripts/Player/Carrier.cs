@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,7 +41,7 @@ public class Carrier : MonoBehaviour {
         }
 
         RaycastHit hit;
-        if (Physics.Linecast(transform.position, m_carriableItem.transform.position, out hit, LayerMask.NameToLayer("Player")))
+        if (Physics.Linecast(transform.position, m_carriableItem.transform.position, out hit, LayerMask.NameToLayer(GameDefs.PLAYER_LAYER)))
         {
             ResetCariable();
             return; 

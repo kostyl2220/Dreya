@@ -10,7 +10,6 @@ public class IdleState : WanderState {
     {
         return "IdleState";
     }
- 
 
     protected override bool InnerUpdateState()
     {

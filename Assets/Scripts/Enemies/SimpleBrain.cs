@@ -1,12 +1,11 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 
-
 public class SimpleBrain : MonoBehaviour {
-
     [System.Serializable]
     public struct MinMaxRange
     {
@@ -28,16 +27,76 @@ public class SimpleBrain : MonoBehaviour {
     }
 
     [SerializeField] public GameObject m_player;
-    [SerializeField] private float m_rangeKoef = 0.4f;
-    [SerializeField] private float m_lookAngle;
-    [SerializeField] private SimpleBrainState m_startupState;
-
     [SerializeField] public bool m_enableDebug;
+    public Vector3 m_lastPlayerMoveDirection { get; set; }
+    private NavMeshAgent m_agent;
 
+    [SerializeField] private float m_rangeKoef = 0.4f;
+    [SerializeField] private float m_agroRangeKoef = 1.8f;
+    [SerializeField] private float m_lookAngle = 60.0f;
+    [SerializeField] private float m_agroLookAngle = 120.0f;
+    [SerializeField] private SimpleBrainState m_startupState;
+    private bool m_isAgressive;
     private SimpleBrainState m_currentState;
-    public NavMeshAgent m_agent { get; private set; }
 
-	void Start ()
+    public void SetAgressive(bool agresive)
+    {
+        m_isAgressive = agresive;
+    }
+
+    public void SetState(SimpleBrainState state)
+    {
+        m_currentState = state;
+        m_currentState.Setup();
+        if (m_enableDebug)
+        {
+            Debug.Log(m_currentState.GetStateName());
+        }
+    }
+
+    public float GetAgentRemainingDistance()
+    {
+        return m_agent.remainingDistance;
+    }
+
+    public void SetNewMovePosition(Vector3 newPos)
+    {
+        NavMeshHit hit;
+        Vector3 finalPosition = transform.position;
+        float radius = Vector3.Distance(transform.position, newPos);
+        if (NavMesh.SamplePosition(newPos, out hit, radius, 1))
+        {
+            finalPosition = hit.position;
+        }
+        m_agent.destination = finalPosition;
+    }
+
+    public bool SeePlayer()
+    {
+        PlayerLightController plc = m_player.GetComponent<PlayerLightController>();
+        float actualLookRange = (m_isAgressive ? m_agroRangeKoef : m_rangeKoef) * plc.GetCurrentIntensity();
+        if (Vector3.Distance(m_player.transform.position, transform.position) > actualLookRange)
+        {
+            return false;
+        }
+
+        float actualLookRangeAngle = (m_isAgressive ? m_agroLookAngle : m_lookAngle);
+        if (Vector3.Angle(m_player.transform.position - transform.position, transform.forward) > actualLookRangeAngle)
+        {
+            return false;
+        }
+
+        //check on dirrect looking
+        RaycastHit hit;
+        if (Physics.Linecast(transform.position, m_player.transform.position, out hit, LayerMask.NameToLayer(GameDefs.PLAYER_LAYER) | LayerMask.NameToLayer(GameDefs.ENEMY_LAYER)))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    void Start ()
     {
         m_agent = GetComponent<NavMeshAgent>();
         if (m_agent)
@@ -51,35 +110,6 @@ public class SimpleBrain : MonoBehaviour {
     void Update () {
         m_currentState.UpdateState();
 	}
-
-    public void SetState(SimpleBrainState state)
-    {
-        m_currentState = state;
-        m_currentState.Setup();
-        if (m_enableDebug)
-        {
-            Debug.Log(m_currentState.GetStateName());
-        }
-    }
-
-    public bool SeePlayer()
-    {
-        PlayerLightController plc = m_player.GetComponent<PlayerLightController>();
-        if (Vector3.Distance(m_player.transform.position, transform.position) > m_rangeKoef * plc.GetCurrentIntensity())
-        {
-            return false;
-        }
-
-        if (Vector3.Angle(m_player.transform.position - transform.position, transform.forward) > m_lookAngle)
-        {
-            return false;
-        }
-
-        //TODO check on dirrect looking
-        //Debug.Log("I see you!");
-
-        return true;
-    }
 
     void OnDrawGizmosSelected()
     {

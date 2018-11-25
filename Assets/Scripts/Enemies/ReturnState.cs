@@ -20,7 +20,7 @@ public class ReturnState : SimpleBrainState
         m_startChasing = !m_startChasing;
         if (!m_startChasing)
         {
-            m_parent.m_agent.destination = m_startPos;
+            m_parent.SetNewMovePosition(m_startPos);
         }
     }
 
@@ -37,11 +37,13 @@ public class ReturnState : SimpleBrainState
             return SetNewState(m_chasingState);
         }
 
-        if (m_parent.m_agent.remainingDistance > EPSILON)
+        if (m_parent.GetAgentRemainingDistance() > EPSILON)
         {
             return false;
         }
 
+        //calm down
+        m_parent.SetAgressive(false);
         return SetNewState(m_decisionState);
     }
 
