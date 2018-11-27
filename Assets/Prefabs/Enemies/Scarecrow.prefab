@@ -29,6 +29,9 @@ GameObject:
   - component: {fileID: 114783118036762196}
   - component: {fileID: 114974524866112726}
   - component: {fileID: 114552536777729562}
+  - component: {fileID: 114202164002413570}
+  - component: {fileID: 114476643640932770}
+  - component: {fileID: 114655456693804632}
   m_Layer: 9
   m_Name: Scarecrow
   m_TagString: Untagged
@@ -1132,6 +1135,17 @@ MonoBehaviour:
     min: 15
     max: 78
   m_rotationSpeed: 40
+--- !u!114 &114202164002413570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000033155238416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4753bb09204074cb921ca5db67110b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114293411761819648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1146,6 +1160,17 @@ MonoBehaviour:
   m_waitTime:
     min: 1
     max: 3
+--- !u!114 &114476643640932770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000033155238416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba2834b4f69f81f41b85d60c5d38e3fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114552536777729562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1171,11 +1196,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
   m_enableDebug: 0
-  m_rangeKoef: 0.4
-  m_agroRangeKoef: 1.8
+  m_rangeKoef: 0.57
+  m_agroRangeKoef: 1.2
   m_lookAngle: 60
   m_agroLookAngle: 120
   m_startupState: {fileID: 114293411761819648}
+--- !u!114 &114655456693804632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000033155238416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62058f73836388848b7a04f12c656f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxHP: 40
 --- !u!114 &114783118036762196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1190,6 +1227,8 @@ MonoBehaviour:
   m_pathUpdateTime: 0.2
   m_passiveFearDamage: 1.5
   m_contactDamage: 20
+  m_cooldown: 1
+  m_contactAttackDistance: 0.3
   m_AttackDistance:
     min: 0.2
     max: 1

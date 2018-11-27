@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerLightController : MonoBehaviour {
 
     [SerializeField] private LightManager m_lightManager;
+    [SerializeField] private GameObject m_playerLightCenter;
     [SerializeField] private float m_lightUpdateTime = 0.2f;
 
     private float m_currentLightIntensity;
@@ -16,6 +17,11 @@ public class PlayerLightController : MonoBehaviour {
         {
             m_lightManager = GetComponent<LightManager>();
         }
+        if (!m_playerLightCenter)
+        {
+            m_playerLightCenter = gameObject;
+        }
+
         m_lastUpdateTime = -1.0f;
 	}
 	
@@ -25,7 +31,7 @@ public class PlayerLightController : MonoBehaviour {
 		if (Time.time > m_lastUpdateTime)
         {
             m_lastUpdateTime = Time.time + m_lightUpdateTime;
-            m_currentLightIntensity = m_lightManager.CalculateLightIntensity(gameObject);
+            m_currentLightIntensity = m_lightManager.CalculateLightIntensity(m_playerLightCenter);
             //Debug.Log("Current light intensity: " + m_currentLightIntensity);
         }
 	}

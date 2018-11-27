@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LightController : MonoBehaviour {
 
-    [SerializeField] private float m_minSpotAngle = 70.0f;
-    [SerializeField] private float m_maxSpotAngle = 100.0f;
     [SerializeField] private float m_minRange = 4.0f;
     [SerializeField] private float m_maxRange = 8.0f;
     [SerializeField] private float m_minIntensity = 1.0f;
@@ -15,8 +13,8 @@ public class LightController : MonoBehaviour {
 
     private float m_currentValue;
 
-	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         m_currentValue = 0;
     }
 	
@@ -28,7 +26,6 @@ public class LightController : MonoBehaviour {
             m_currentValue = Mathf.Clamp(m_currentValue + currentChange, 0, 1);
         }
 
-        m_lighter.spotAngle = Mathf.Lerp(m_minSpotAngle, m_maxSpotAngle, m_currentValue);
         m_lighter.range = Mathf.Lerp(m_minRange, m_maxRange, m_currentValue);
         m_lighter.intensity = Mathf.Lerp(m_minIntensity, m_maxIntensity, m_currentValue);
 	}

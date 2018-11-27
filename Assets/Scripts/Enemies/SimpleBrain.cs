@@ -88,7 +88,7 @@ public class SimpleBrain : MonoBehaviour {
 
         //check on dirrect looking
         RaycastHit hit;
-        if (Physics.Linecast(transform.position, m_player.transform.position, out hit, LayerMask.NameToLayer(GameDefs.PLAYER_LAYER) | LayerMask.NameToLayer(GameDefs.ENEMY_LAYER)))
+        if (Physics.Linecast(transform.position, m_player.transform.position, out hit, GameDefs.PLAYER_LAYER | GameDefs.ENEMY_LAYER))
         {
             return false;
         }
