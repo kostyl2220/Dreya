@@ -24,9 +24,4 @@ public class Dress : Item {
     {
         return m_protection;
     }
-
-    public virtual void AddAbilities(Inventory inventory)
-    {
-        inventory.AddProtection(m_protection);
-    }
 }

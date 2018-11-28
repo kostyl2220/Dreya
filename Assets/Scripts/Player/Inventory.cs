@@ -2,99 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct Protection
-{
-    float fear;
-    float noise;
-
-    public static Protection operator+(Protection prot1, Protection prot2)
-    {
-        Protection newP;
-        newP.fear = prot1.fear + prot2.fear;
-        newP.noise = prot1.noise + prot2.noise;
-        return newP;
-    }
-
-    public static Protection operator-(Protection prot1, Protection prot2)
-    {
-        Protection newP;
-        newP.fear = Mathf.Max(prot1.fear - prot2.fear, 0) ;
-        newP.noise = Mathf.Max(prot1.noise - prot2.noise, 0);
-        return newP;
-    }
-}
 
 public class Inventory : MonoBehaviour {
 
-    [SerializeField]
-    private Transform [] m_dressPoses = new Transform[(int)Dress.DressType.DressType_Count];
-
-    private Protection m_generalProtection;
-
     private List<Item> m_items;
-    private Dress [] m_dresses;
+    private AttackComponent m_attackComp;
+    private Wardrobe m_wardrobe;
 	// Use this for initialization
 	void Start ()
     {
         m_items = new List<Item>();
-        m_dresses = new Dress[(int)Dress.DressType.DressType_Count];
-    }
-
-    public void DressItem(Dress item)
-    {
-        int itemId = (int)item.GetDressType();
-        if (m_dresses[itemId])
-        {
-            if (m_dresses[itemId] == item)
-            {
-                return;
-            }
-            RemoveProtection(m_dresses[itemId].GetProtection());
-            m_dresses[itemId].gameObject.SetActive(false);
-        }
-        item.gameObject.transform.SetParent( m_dressPoses[itemId]);
-        item.gameObject.transform.position = m_dressPoses[itemId].position;
-        item.gameObject.transform.rotation = m_dressPoses[itemId].rotation;
-        item.gameObject.SetActive(true);
-        m_dresses[itemId] = item;
-        AddProtection(item.GetProtection());
-    }
-
-    public void UndressItem(Dress.DressType type)
-    {
-        Dress currentDress = m_dresses[(int)type];
-        if (currentDress)
-        {
-            RemoveProtection(currentDress.GetProtection());
-            currentDress.gameObject.SetActive(false);
-            m_dresses[(int)type] = null;
-        }
+        m_attackComp = GetComponent<AttackComponent>();
+        m_wardrobe = GetComponent<Wardrobe>();
     }
 
     public void PickItem(Item item)
     {
         m_items.Add(item);
-        item.gameObject.transform.position = gameObject.transform.position;
-        item.gameObject.transform.SetParent(gameObject.transform);       
-        item.gameObject.SetActive(false);
+        item.SetItemPicked(true);
+        item.GetRoot().transform.position = gameObject.transform.position;
+        item.GetRoot().transform.SetParent(gameObject.transform);       
+        item.GetRoot().SetActive(false);
     }
 
     public void ThrowItem(Item item)
     {
         m_items.Remove(item);
-        item.gameObject.transform.SetParent(null);
-        item.gameObject.transform.position = gameObject.transform.position;
-        item.gameObject.SetActive(true);
-    }
-
-    public void AddProtection(Protection protection)
-    {
-        m_generalProtection += protection;
-    }
-
-    public void RemoveProtection(Protection protection)
-    {
-        m_generalProtection -= protection;
+        item.SetItemPicked(false);
+        item.GetRoot().transform.SetParent(null);
+        item.GetRoot().transform.position = gameObject.transform.position;
+        item.GetRoot().SetActive(true);
     }
 
     public List<Item> GetAllItems()
@@ -112,20 +49,50 @@ public class Inventory : MonoBehaviour {
         return items.TrueForAll((Item i) => { return m_items.Contains(i); });
     }
 
+    //Refactor this mehtod
+    private void StartUsingItem(Item item)
+    {
+        if (item is Dress)
+        {
+            Dress dr = (Dress)item;
+            m_wardrobe.DressItem(dr);
+        }
+        else if (item is Weapon)
+        {
+            Weapon wp = (Weapon)item;
+            m_attackComp.SetRightHandWeapon(wp);
+        }
+    }
+
+    //Refactor this mehtod
+    private void StopUsingItem(Item item)
+    {
+        if (item is Dress)
+        {
+            Dress dr = (Dress)item;
+            m_wardrobe.UndressItem(dr.GetDressType());
+        }
+        else if (item is Weapon)
+        {
+            Weapon wp = (Weapon)item;
+            m_attackComp.SetRightHandWeapon(null);
+        }
+    }
+
     // Update is called once per frame
     void Update () {
 		if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (m_items.Count >= 1)
             {
-                DressItem((Dress)m_items[0]);
+                StartUsingItem(m_items[0]);
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (m_items.Count >= 1)
             {
-                UndressItem(Dress.DressType.DressType_Helmet);
+                StopUsingItem(m_items[0]);
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))

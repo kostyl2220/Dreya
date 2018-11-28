@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Pickable : Interactable {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-
+public abstract class Pickable : Interactable
+{
     protected abstract void PickedByPlayer(GameObject player);
 
     protected override void InteractWithPlayer(GameObject player)
@@ -25,9 +20,4 @@ public abstract class Pickable : Interactable {
     {
         return true;
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

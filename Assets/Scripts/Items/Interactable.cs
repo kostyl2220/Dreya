@@ -31,9 +31,4 @@ public abstract class Interactable : MonoBehaviour {
     {
         return false;
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

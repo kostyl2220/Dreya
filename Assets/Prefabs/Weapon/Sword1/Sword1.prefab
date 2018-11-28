@@ -39,6 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4296797980061476}
+  - component: {fileID: 111051715502591242}
   m_Layer: 16
   m_Name: Sword1
   m_TagString: Untagged
@@ -122,7 +123,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1426628356357508}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.004552957, y: 0.0024639165, z: 0.087282404}
@@ -145,6 +146,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!111 &111051715502591242
+Animation:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1707111045766726}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 20741bfbce4173b4b97bd7965f77d3de, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 20741bfbce4173b4b97bd7965f77d3de, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114581736474483062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,8 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5d5d0531ae5de448e5820d1ebcffb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_type: 0
   m_cooldown: 1
   m_damage: 20
-  m_animator: {fileID: 0}
+  m_animation: {fileID: 0}
   m_simpleAttack: SimpleAttack
