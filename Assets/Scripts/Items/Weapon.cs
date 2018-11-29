@@ -7,7 +7,6 @@ public class Weapon : Item
     [SerializeField] public float m_cooldown = 1.0f;
     [SerializeField] public float m_damage = 20.0f;
     [SerializeField] private Animation m_animation;
-
     [SerializeField] private string m_simpleAttack = "SimpleAttack";
 
     private AttackComponent m_attackComp;
@@ -43,6 +42,11 @@ public class Weapon : Item
         {
             drc.GetDamage(m_damage);
         }
+    }
+
+    public override void Picked()
+    {
+        m_inventory.PickWeapon(this);
     }
 
     public void Hit()

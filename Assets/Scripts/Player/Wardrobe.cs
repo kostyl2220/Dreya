@@ -33,27 +33,30 @@ public class Wardrobe : MonoBehaviour
     private Dress[] m_dresses;
     private Protection m_generalProtection;
 
-    public void DressItem(Dress item)
+    public Dress DressItem(Dress item)
     {
+        Dress oldDress = null;
         int itemId = (int)item.GetDressType();
         if (m_dresses[itemId])
         {
-            if (m_dresses[itemId] == item)
+            oldDress = m_dresses[itemId];
+            if (oldDress == item) // never should happen
             {
-                return;
+                return null;
             }
-            RemoveProtection(m_dresses[itemId].GetProtection());
-            m_dresses[itemId].gameObject.SetActive(false);
+            RemoveProtection(oldDress.GetProtection());
         }
         item.GetRoot().transform.SetParent(m_dressPoses[itemId]);
         item.GetRoot().transform.localPosition = Vector3.zero;
         item.GetRoot().transform.localRotation = Quaternion.identity;
-        item.gameObject.SetActive(true);
+        item.GetRoot().SetActive(true);
         m_dresses[itemId] = item;
         AddProtection(item.GetProtection());
+
+        return oldDress;
     }
 
-    public void UndressItem(Dress.DressType type)
+    public Dress UndressItem(Dress.DressType type)
     {
         Dress currentDress = m_dresses[(int)type];
         if (currentDress)
@@ -62,6 +65,7 @@ public class Wardrobe : MonoBehaviour
             currentDress.gameObject.SetActive(false);
             m_dresses[(int)type] = null;
         }
+        return currentDress;
     }
 
     public void AddProtection(Protection protection)

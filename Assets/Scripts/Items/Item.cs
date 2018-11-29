@@ -5,9 +5,12 @@ using UnityEngine;
 public class Item : Pickable
 {
     [SerializeField] private Collider m_pickingCollider;
+    [SerializeField] private Collider m_bodyCollider;
     [SerializeField] private GameObject m_rootElement;
+    [SerializeField] private Rigidbody m_rigidbody;
 
     private bool m_isPicked;
+    protected Inventory m_inventory;
 
     protected void Start()
     {
@@ -19,9 +22,23 @@ public class Item : Pickable
         {
             m_rootElement = gameObject;
         }
+        if (!m_rigidbody)
+        {
+            m_rigidbody = GetComponent<Rigidbody>();
+        }
     }
 
-    public virtual void Use()
+    public Rigidbody GetRigidBody()
+    {
+        return m_rigidbody;
+    }
+
+    public void SetInventory(Inventory inv)
+    {
+        m_inventory = inv;
+    }
+
+    public virtual void Picked()
     {
 
     }
@@ -34,7 +51,18 @@ public class Item : Pickable
     public void SetItemPicked(bool picked)
     {
         m_isPicked = picked;
-        m_pickingCollider.enabled = !picked;
+        if (m_bodyCollider)
+        {
+            m_pickingCollider.enabled = !picked;
+        }
+        if (m_bodyCollider)
+        {
+            m_bodyCollider.isTrigger = picked;
+        }
+        if (m_rigidbody)
+        {
+            m_rigidbody.isKinematic = picked;
+        }
     }
 
     public bool IsPicked()

@@ -15,11 +15,12 @@ public class AttackComponent : MonoBehaviour {
         m_lastHitCooldown = 0;
     }
 
-    public void SetRightHandWeapon(Weapon weapon)
+    public Weapon SetRightHandWeapon(Weapon weapon)
     {
+        Weapon oldWeapon = null;
         if (m_rightHandWeapon)
         {
-            m_rightHandWeapon.GetRoot().SetActive(false);
+            oldWeapon = m_rightHandWeapon;
         }
 
         m_rightHandWeapon = weapon;
@@ -29,6 +30,8 @@ public class AttackComponent : MonoBehaviour {
             m_rightHandWeapon.GetRoot().SetActive(true);
             ResetParent();
         }
+
+        return oldWeapon;
     }
 
     public void ResetParent()

@@ -6,6 +6,7 @@ public class Dress : Item {
     [SerializeField] private DressType m_type;
     [SerializeField] private Protection m_protection;
 
+    private Wardrobe m_wardrobe;
     public enum DressType
     {
         DressType_Helmet,
@@ -23,5 +24,10 @@ public class Dress : Item {
     public Protection GetProtection()
     {
         return m_protection;
+    }
+
+    public override void Picked()
+    {
+        m_inventory.PickDress(this);
     }
 }
