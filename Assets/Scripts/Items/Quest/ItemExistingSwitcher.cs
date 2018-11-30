@@ -10,6 +10,12 @@ public class ItemExistingSwitcher : Interactable {
 
     protected override void InteractWithPlayer(GameObject player)
     {
+        if (m_shouldPlayerHave.Count == 0)
+        {
+            m_itemsToSwitch.ForEach((Switcher s) => { s.Switch(); });
+            return;
+        }
+
         Inventory inventory = player.GetComponent<Inventory>();
         if (inventory && inventory.AllItemsExists(m_shouldPlayerHave))
         {

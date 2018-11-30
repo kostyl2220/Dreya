@@ -12,5 +12,6 @@ namespace Assets.Scripts
         public static int ENEMY_LAYER = LayerMask.NameToLayer("Enemy");
 
         public static int LIGHT_LAYER = LayerMask.NameToLayer("Light");
+        public static string PLAYER_TAG = "Player";
     }
 }
