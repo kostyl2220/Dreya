@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ public abstract class Interactable : MonoBehaviour {
 
     private void OnTriggerStay(Collider collision)
     {
-        if (collision.transform.tag != "Player")
+        if (collision.transform.tag != GameDefs.PLAYER_TAG)
         {
             return;
         }

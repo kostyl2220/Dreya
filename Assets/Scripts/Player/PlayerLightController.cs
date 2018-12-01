@@ -6,6 +6,7 @@ public class PlayerLightController : MonoBehaviour {
 
     [SerializeField] private LightManager m_lightManager;
     [SerializeField] private GameObject m_playerLightCenter;
+    [SerializeField] private GameObject m_playerLookCenter;
     [SerializeField] private float m_lightUpdateTime = 0.2f;
 
     private float m_currentLightIntensity;
@@ -35,6 +36,11 @@ public class PlayerLightController : MonoBehaviour {
             //Debug.Log("Current light intensity: " + m_currentLightIntensity);
         }
 	}
+
+    public Vector3 GetPlayerLookCenter()
+    {
+        return m_playerLookCenter ? m_playerLookCenter.transform.position : Vector3.zero;
+    }
 
     public float GetCurrentIntensity()
     {

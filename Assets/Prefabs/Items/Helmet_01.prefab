@@ -54,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1573031729366446}
   m_LocalRotation: {x: -0.5935995, y: -0.22304207, z: -0.1758322, w: 0.7529774}
-  m_LocalPosition: {x: -0.00047, y: 0.0036, z: 0.00073}
+  m_LocalPosition: {x: -0.00047, y: 0.00395, z: 0.00073}
   m_LocalScale: {x: 25.399998, y: 25.399998, z: 25.4}
   m_Children: []
   m_Father: {fileID: 4246958608867428}
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1246141350267752}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.155896, y: 1.384, z: -18.411757}
+  m_LocalPosition: {x: 10.409351, y: 1.333, z: -19.067059}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children:
   - {fileID: 4041051304170240}
@@ -157,7 +157,11 @@ MonoBehaviour:
   m_pickingCollider: {fileID: 135266728632003612}
   m_bodyCollider: {fileID: 65895153978056812}
   m_rootElement: {fileID: 1246141350267752}
-  m_rigidbody: {fileID: 0}
+  m_rigidbody: {fileID: 54487168808667598}
+  m_timeToDestroy: 5
+  m_blinkingStartPersentage: 0.5
+  m_countOfBlinkings: 3
+  m_renderer: {fileID: 23091220402070810}
   m_type: 0
 --- !u!135 &135266728632003612
 SphereCollider:

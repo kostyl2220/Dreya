@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : Item
+public class Weapon : Exchangable
 {
     [SerializeField] public float m_cooldown = 1.0f;
     [SerializeField] public float m_damage = 20.0f;
@@ -46,6 +46,7 @@ public class Weapon : Item
 
     public override void Picked()
     {
+        base.Picked();
         m_inventory.PickWeapon(this);
     }
 

@@ -175,6 +175,10 @@ MonoBehaviour:
   m_bodyCollider: {fileID: 65208173775629548}
   m_rootElement: {fileID: 1707111045766726}
   m_rigidbody: {fileID: 54929267008964964}
+  m_timeToDestroy: 5
+  m_blinkingStartPersentage: 0.5
+  m_countOfBlinkings: 3
+  m_renderer: {fileID: 23881829504199120}
   m_cooldown: 1
   m_damage: 20
   m_animation: {fileID: 111597829041254750}

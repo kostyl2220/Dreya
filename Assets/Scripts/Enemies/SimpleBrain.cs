@@ -36,6 +36,8 @@ public class SimpleBrain : MonoBehaviour {
     [SerializeField] private float m_lookAngle = 60.0f;
     [SerializeField] private float m_agroLookAngle = 120.0f;
     [SerializeField] private SimpleBrainState m_startupState;
+    [SerializeField] private Transform m_lookCenter;
+
     private bool m_isAgressive;
     private SimpleBrainState m_currentState;
 
@@ -88,7 +90,7 @@ public class SimpleBrain : MonoBehaviour {
 
         //check on dirrect looking
         RaycastHit hit;
-        if (Physics.Linecast(transform.position, m_player.transform.position, out hit, GameDefs.PLAYER_LAYER | GameDefs.ENEMY_LAYER))
+        if (Physics.Linecast(m_lookCenter.position, plc.GetPlayerLookCenter(), out hit, GameDefs.PLAYER_LAYER | GameDefs.ENEMY_LAYER))
         {
             return false;
         }

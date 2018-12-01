@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dress : Item {
+public class Dress : Exchangable
+{
     [SerializeField] private DressType m_type;
     [SerializeField] private Protection m_protection;
 
@@ -28,6 +29,7 @@ public class Dress : Item {
 
     public override void Picked()
     {
+        base.Picked();
         m_inventory.PickDress(this);
     }
 }

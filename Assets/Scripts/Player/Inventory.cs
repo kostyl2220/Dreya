@@ -53,6 +53,12 @@ public class Inventory : MonoBehaviour {
         item.SetInventory(this);
     }
 
+    private void Throw(Exchangable exch)
+    {
+        exch.StartDestroying();
+        Throw((Item)exch);
+    }
+
     private void Throw(Item item)
     {
         m_items.Remove(item);
