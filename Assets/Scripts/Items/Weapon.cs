@@ -9,6 +9,7 @@ public class Weapon : Exchangable
     [SerializeField] private Animation m_animation;
     [SerializeField] private string m_simpleAttack = "SimpleAttack";
 
+    private bool m_isAttacking;
     private AttackComponent m_attackComp;
     // Use this for initialization
     new void Start ()
@@ -30,9 +31,14 @@ public class Weapon : Exchangable
         m_attackComp.ResetParent();
     }
 
+    public void AttackFinished()
+    {
+        m_isAttacking = false;
+    }
+
     private void OnTriggerEnter(Collider collider)
     {
-        if (!m_animation.isPlaying)
+        if (!m_isAttacking)
         {
             return;
         }
@@ -54,5 +60,6 @@ public class Weapon : Exchangable
     {
         m_animation.Stop();
         m_animation.Play(m_simpleAttack);
+        m_isAttacking = true;
     }
 }
