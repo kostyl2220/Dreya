@@ -5,49 +5,53 @@ using UnityEngine.UI;
 
 public class TaskBar : MonoBehaviour {
 
-    [SerializeField] private Task m_newTask;
-    [SerializeField] private LayoutGroup m_mainTaskBar;
-    [SerializeField] private LayoutGroup m_auxiliaryTaskBar;
-    [SerializeField] private Text m_mainTasksText;
-    [SerializeField] private Text m_auxiliaryTasksText;
+    [System.Serializable]
+    public struct TaskSet
+    {
+        [SerializeField] public LayoutGroup m_bar;
+        [SerializeField] public Text m_text;
 
-    private List<Task> m_mainTasks;
+        public List<Task> m_list;
+    }
+
+    [SerializeField] private Task m_newTask;
+    [SerializeField] private TaskSet m_mainSet;
+    [SerializeField] private TaskSet m_auxiliarySet;
+
     private List<Task> m_auxiliaryTasks;
 
     void OnEnable () {
-        m_mainTasks = new List<Task>();
-        m_auxiliaryTasks = new List<Task>();
+        m_mainSet.m_list = new List<Task>();
+        m_auxiliarySet.m_list = new List<Task>();
 	}
 
-    private void CheckTaskPresence()
+    private void CheckTaskPresence(bool isMain)
     {
-        m_mainTasksText.gameObject.SetActive(m_mainTasks.Count > 0);
-        m_auxiliaryTasksText.gameObject.SetActive(m_auxiliaryTasks.Count > 0);
-        m_mainTaskBar.gameObject.SetActive(m_mainTasks.Count > 0);
-        m_auxiliaryTaskBar.gameObject.SetActive(m_auxiliaryTasks.Count > 0);
+        TaskSet set = isMain ? m_mainSet : m_auxiliarySet;
+        set.m_text.gameObject.SetActive(set.m_list.Count > 0);
+        set.m_bar.gameObject.SetActive(set.m_list.Count > 0);
     }
 
-    public void AddTask(TaskManager.TaskInfo taskInfo, bool isMain)
+    public void AddTask(TaskManager.TaskInfo taskInfo)
     {
-        List<Task> listAddTo = isMain ? m_mainTasks : m_auxiliaryTasks;
-        LayoutGroup parentLayout = isMain ? m_mainTaskBar : m_auxiliaryTaskBar;
+        TaskSet set = taskInfo.m_isMain ? m_mainSet : m_auxiliarySet;
         Task newTask = Instantiate(m_newTask);
         newTask.SetTask(taskInfo);
-        newTask.transform.SetParent(parentLayout.transform);
-        listAddTo.Add(newTask);
-        CheckTaskPresence();
+        newTask.transform.SetParent(set.m_bar.transform);
+        set.m_list.Add(newTask);
+        CheckTaskPresence(taskInfo.m_isMain);
     }
 
     public void CompleteTask(int taskId, bool isMain)
     {
-        List<Task> listToSearchIn = isMain ? m_mainTasks : m_auxiliaryTasks;
+        List<Task> listToSearchIn = isMain ? m_mainSet.m_list : m_auxiliarySet.m_list;
         int completedTaskInListId = listToSearchIn.FindIndex((Task t) => { return t.GetTaskId() == taskId; });
         if (completedTaskInListId != -1)
         {
             Task completedTask = listToSearchIn[completedTaskInListId];
             listToSearchIn.RemoveAt(completedTaskInListId);
             Destroy(completedTask.gameObject);
-            CheckTaskPresence();
+            CheckTaskPresence(isMain);
         }
     }
 	
