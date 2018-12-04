@@ -180,7 +180,8 @@ MonoBehaviour:
   m_countOfBlinkings: 3
   m_renderer: {fileID: 23881829504199120}
   m_cooldown: 1
-  m_damage: 20
+  m_damage: 2
+  m_pushForce: 0
   m_animation: {fileID: 111597829041254750}
   m_simpleAttack: SimpleAttack
 --- !u!135 &135114675414715918

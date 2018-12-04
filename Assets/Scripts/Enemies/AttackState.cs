@@ -38,6 +38,10 @@ public class AttackState : FollowState
         {
             ShouldUpdatePath();
         }
+        else
+        {
+            m_parent.AgentForceStop();
+        }
 
         
         Fearable fearable = m_parent.m_player.GetComponent<Fearable>();
@@ -49,7 +53,7 @@ public class AttackState : FollowState
             fearable.ChangeFear(fear);
 
             // perform active damage
-            if (distanceToPlayer < m_contactAttackDistance && m_attackCooldownTime > Time.time)
+            if (distanceToPlayer < m_contactAttackDistance && m_attackCooldownTime < Time.time)
             {
                 m_attackCooldownTime = Time.time + m_cooldown;
                 fearable.ChangeFear(m_contactDamage);

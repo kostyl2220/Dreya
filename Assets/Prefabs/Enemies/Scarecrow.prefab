@@ -33,6 +33,7 @@ GameObject:
   - component: {fileID: 114476643640932770}
   - component: {fileID: 114655456693804632}
   - component: {fileID: 136121407071755126}
+  - component: {fileID: 54258640060627464}
   m_Layer: 9
   m_Name: Scarecrow
   m_TagString: Untagged
@@ -1129,6 +1130,21 @@ Transform:
   m_Father: {fileID: 4574840076396170}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54258640060627464
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000033155238416}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95872249031976078
 Animator:
   serializedVersion: 3
@@ -1176,6 +1192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4753bb09204074cb921ca5db67110b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_dyingTime: 1
+  m_dyingMinScale: 0.3
+  m_afterDyingObject: {fileID: 0}
 --- !u!114 &114293411761819648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1259,9 +1278,9 @@ MonoBehaviour:
   m_passiveFearDamage: 1.5
   m_contactDamage: 20
   m_cooldown: 1
-  m_contactAttackDistance: 0.3
+  m_contactAttackDistance: 0.35
   m_AttackDistance:
-    min: 0.2
+    min: 0.3
     max: 1
 --- !u!114 &114833384049524052
 MonoBehaviour:
@@ -1485,7 +1504,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1000033155238416}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.2
+  m_Radius: 0.1
   m_Speed: 1
   m_Acceleration: 2
   avoidancePriority: 50

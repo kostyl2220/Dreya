@@ -6,6 +6,7 @@ public class Weapon : Exchangable
 {
     [SerializeField] public float m_cooldown = 1.0f;
     [SerializeField] public float m_damage = 20.0f;
+    [SerializeField] public float m_pushForce = 4.0f;
     [SerializeField] private Animation m_animation;
     [SerializeField] private string m_simpleAttack = "SimpleAttack";
 
@@ -46,7 +47,8 @@ public class Weapon : Exchangable
         DamageReceiveComponent drc = collider.gameObject.GetComponent<DamageReceiveComponent>();
         if (drc)
         {
-            drc.GetDamage(m_damage);
+            Vector3 attackDirection = (collider.gameObject.transform.position - m_attackComp.GetAttacker().transform.position).normalized;
+            drc.GetDamage(m_damage, attackDirection * m_pushForce);
         }
     }
 

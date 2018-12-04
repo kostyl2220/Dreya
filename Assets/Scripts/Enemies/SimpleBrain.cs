@@ -61,6 +61,11 @@ public class SimpleBrain : MonoBehaviour {
         return m_agent.remainingDistance;
     }
 
+    public void AgentForceStop()
+    { 
+        m_agent.ResetPath();
+    }
+
     public void SetNewMovePosition(Vector3 newPos)
     {
         NavMeshHit hit;

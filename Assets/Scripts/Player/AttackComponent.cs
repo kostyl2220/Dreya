@@ -34,6 +34,11 @@ public class AttackComponent : MonoBehaviour {
         return oldWeapon;
     }
 
+    public GameObject GetAttacker()
+    {
+        return gameObject;
+    }
+
     public void ResetParent()
     {
         m_rightHandWeapon.GetRoot().transform.SetParent(m_rightHandSlot.transform);

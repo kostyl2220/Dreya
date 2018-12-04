@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [RequireComponent(typeof(Collider))]
 public abstract class Interactable : MonoBehaviour {
 
@@ -18,7 +17,6 @@ public abstract class Interactable : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("Pick item");
             InteractWithPlayer(collision.gameObject);
 
             if (ShouldDestroyAfterInteraction())
