@@ -7,7 +7,7 @@ public abstract class Switcher : MonoBehaviour {
 
     protected abstract void Switched();
 
-    void Start()
+    protected void Start()
     {
         Switched();
     }

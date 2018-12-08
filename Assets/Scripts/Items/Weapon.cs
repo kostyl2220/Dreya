@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Weapon : Exchangable
 {
+    private static float INFINITE_DAMAGE = 100000.0f;
+
     [SerializeField] public float m_cooldown = 1.0f;
     [SerializeField] public float m_damage = 20.0f;
     [SerializeField] public float m_pushForce = 4.0f;
@@ -47,8 +49,10 @@ public class Weapon : Exchangable
         DamageReceiveComponent drc = collider.gameObject.GetComponent<DamageReceiveComponent>();
         if (drc)
         {
+            float actualDamage = m_damage;
             Vector3 attackDirection = (collider.gameObject.transform.position - m_attackComp.GetAttacker().transform.position).normalized;
-            drc.GetDamage(m_damage, attackDirection * m_pushForce);
+            drc.GetDamage(m_attackComp.PerformCriticalHit() ? INFINITE_DAMAGE : actualDamage, attackDirection * m_pushForce);
+            m_attackComp.HitPerformed(actualDamage);
         }
     }
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Fearable : MonoBehaviour {
 
+    //TODO separate to special HUD class
     [SerializeField] private float m_initFear = 0.0f;
     [SerializeField] private float m_maxFear;
     [SerializeField] private Image m_fearBar;
@@ -12,10 +13,11 @@ public class Fearable : MonoBehaviour {
 
     private float m_currentFear;
     private float m_fearBarHeight;
+    private PlayerSkills m_playerSkills;
 
     public void ChangeFear(float fear)
     {
-        m_currentFear = Mathf.Clamp(m_currentFear + fear, 0, m_maxFear);
+        m_currentFear = Mathf.Clamp(GetFear() + fear, 0, GetMaxFear());
         UpdateHUD();
     }
 
@@ -23,7 +25,7 @@ public class Fearable : MonoBehaviour {
     {
         if (m_fearText)
         {
-            m_fearText.text = m_currentFear + "/" + m_maxFear;
+            m_fearText.text = GetFear() + "/" + GetMaxFear();
         }
         if (m_fearBar)
         {
@@ -33,12 +35,18 @@ public class Fearable : MonoBehaviour {
     
     public float GetFearPersentage()
     {
-        return m_currentFear / m_maxFear;
+        return GetFear() / GetMaxFear();
     }
 
     public float GetFear()
     {
         return m_currentFear;
+    }
+
+    public float GetMaxFear()
+    {
+        Skill skill = m_playerSkills.GetSkill(Skill.SkillType.AdditionalHP);
+        return m_maxFear + (skill == null ? 0 : skill.GetEffect());
     }
 
     // Use this for initialization
@@ -48,7 +56,16 @@ public class Fearable : MonoBehaviour {
         {
             m_fearBarHeight = m_fearBar.rectTransform.sizeDelta.y; ;
         }
+        if (!m_playerSkills)
+        {
+            m_playerSkills = GetComponent<PlayerSkills>();
+        }
+        if (m_playerSkills)
+        {
+            m_playerSkills.m_onAddSkill += (() => { UpdateHUD(); });
+        }
         UpdateHUD();
+        
     }
 	
 	// Update is called once per frame

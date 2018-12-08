@@ -8,11 +8,55 @@ public class AttackComponent : MonoBehaviour {
     [SerializeField] private GameObject m_rightHandSlot;
     private Weapon m_rightHandWeapon;
     private float m_lastHitCooldown;
+    private PlayerSkills m_playerSkills;
+    private Fearable m_fearable;
 
     // Use this for initialization
     void Start ()
     {
         m_lastHitCooldown = 0;
+        if (!m_playerSkills)
+        {
+            m_playerSkills = GetComponent<PlayerSkills>();
+        }
+        if (!m_fearable)
+        {
+            m_fearable = GetComponent<Fearable>();
+        }
+    }
+
+    public bool PerformCriticalHit()
+    {
+        if (!m_playerSkills)
+        {
+            return false;
+        }
+
+        Skill criticalHit = m_playerSkills.GetSkill(Skill.SkillType.CriticalHit);
+
+        if (!criticalHit)
+        {
+            return false;
+        }
+
+        return Random.Range(0, 1) < criticalHit.GetEffect();
+    }
+
+    public void HitPerformed(float damage)
+    {
+        if (!(m_playerSkills && m_fearable))
+        {
+            return;
+        }
+
+        Skill inspiration = m_playerSkills.GetSkill(Skill.SkillType.Inspiration);
+        if (!inspiration)
+        {
+            return;
+        }
+
+        float fearDecreased = inspiration.GetEffect() * damage;
+        m_fearable.ChangeFear(-fearDecreased);
     }
 
     public Weapon SetRightHandWeapon(Weapon weapon)

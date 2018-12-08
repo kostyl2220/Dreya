@@ -9,6 +9,7 @@ public class PlayerLightController : MonoBehaviour {
     [SerializeField] private GameObject m_playerLookCenter;
     [SerializeField] private float m_lightUpdateTime = 0.2f;
 
+    private PlayerSkills m_playerSkills;
     private float m_currentLightIntensity;
     private float m_lastUpdateTime;
 	// Use this for initialization
@@ -33,6 +34,18 @@ public class PlayerLightController : MonoBehaviour {
         {
             m_lastUpdateTime = Time.time + m_lightUpdateTime;
             m_currentLightIntensity = m_lightManager.CalculateLightIntensity(m_playerLightCenter);
+
+            if (!m_playerSkills)
+            {
+                return;
+            }
+
+            Skill flashHider = m_playerSkills.GetSkill(Skill.SkillType.LightHider);
+            if (flashHider)
+            {
+                m_currentLightIntensity *= flashHider.GetEffect();
+            }
+
             //Debug.Log("Current light intensity: " + m_currentLightIntensity);
         }
 	}
