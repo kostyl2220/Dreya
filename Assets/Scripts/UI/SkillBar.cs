@@ -49,6 +49,11 @@ public class SkillBar : MonoBehaviour {
 
     public void ApplySkill()
     {
+        if (!m_currentSkill)
+        {
+            return;
+        }
+
         if (!m_playerSkills)
         {
             return;
