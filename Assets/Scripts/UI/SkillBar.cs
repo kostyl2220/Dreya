@@ -9,10 +9,10 @@ public class SkillBar : MonoBehaviour {
     [SerializeField] private Button m_selectButton;
     [SerializeField] private Text m_countOfSkillsText;
 
-    private Skill m_currentSkill;
+    private UISkill m_currentSkill;
     private GameObject m_myEventSystem;
 
-    public void SelectSkill(Skill skill)
+    public void SelectSkill(UISkill skill)
     {
         m_currentSkill = skill;
     }
@@ -30,6 +30,23 @@ public class SkillBar : MonoBehaviour {
         }
     }
 
+    public int GetInitSkillLevel(Skill.SkillType skillType)
+    {
+        if (!m_playerSkills)
+        {
+            return 0;
+        }
+
+        Skill skill = m_playerSkills.GetSkill(skillType);
+
+        if (skill == null)
+        {
+            return 0;
+        }
+
+        return skill.GetLevel();
+    }
+
     public void ApplySkill()
     {
         if (!m_playerSkills)
@@ -44,7 +61,9 @@ public class SkillBar : MonoBehaviour {
         --m_playerSkills.m_avaliableSkills;
 
         //Apply skill to player
-        m_playerSkills.AddSkill(m_currentSkill);
+        Skill newSkill = Instantiate(m_currentSkill.GetSkill());
+        int currentLevel = m_playerSkills.AddSkill(newSkill);
+        m_currentSkill.SetSkillLevel(currentLevel);
         SetAvaliableSkills(m_playerSkills.m_avaliableSkills);
         ResetCurrentSkill();
     }
@@ -74,4 +93,10 @@ public class SkillBar : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void Start()
+    {
+
+    }
+
 }

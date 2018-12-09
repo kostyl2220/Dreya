@@ -18,10 +18,9 @@ public abstract class Switcher : MonoBehaviour {
         Switched();
     }
 
-    public bool SwitchOn()
+    public void SwitchOn()
     {
-        Debug.Log("SwitchOn");
-        return ForceSwitch(true);
+        ForceSwitch(true);
     }
 
     public bool ForceSwitch(bool value)
@@ -35,9 +34,8 @@ public abstract class Switcher : MonoBehaviour {
         return true;
     }
 
-    public bool SwitchOff()
+    public void SwitchOff()
     {
-        Debug.Log("SwitchOff");
-        return ForceSwitch(false);
+        ForceSwitch(false);
     }
 }

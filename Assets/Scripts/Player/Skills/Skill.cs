@@ -18,13 +18,41 @@ public class Skill : MonoBehaviour {
         Count
     };
 
+    [SerializeField] private bool m_active;
+    [SerializeField] private Material m_icon;
     [SerializeField] private SkillType m_type;
     [SerializeField] protected float[] m_values = new float[MAX_LEVEL + 1];
-    protected int m_level;
+    protected int m_level = 1;
+    protected float m_nextUpdate;
 
     public int GetId()
     {
         return (int)m_type;
+    }
+
+    public virtual void InitSkill(GameObject player)
+    {
+
+    }
+
+    public SkillType GetSkillType()
+    {
+        return m_type;
+    }
+
+    public virtual float GetCooldown()
+    {
+        return 1.0f;
+    }
+
+    public float GetNextUpdateTime()
+    {
+        return m_nextUpdate;
+    }
+
+    public bool IsActive()
+    {
+        return m_active;
     }
 
     public void LevelUp()
@@ -34,6 +62,16 @@ public class Skill : MonoBehaviour {
             return;
         }
         ++m_level;
+    }
+
+    public int GetLevel()
+    {
+        return m_level;
+    }
+
+    public Material GetIconMaterial()
+    {
+        return m_icon;
     }
 
     public bool Downgrade()
@@ -51,10 +89,5 @@ public class Skill : MonoBehaviour {
     {
         return m_values[m_level];
     }
-
-	// Use this for initialization
-	protected void Start () {
-        m_level = 0;
-	}
 
 }

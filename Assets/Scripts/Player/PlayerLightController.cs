@@ -7,6 +7,7 @@ public class PlayerLightController : MonoBehaviour {
     [SerializeField] private LightManager m_lightManager;
     [SerializeField] private GameObject m_playerLightCenter;
     [SerializeField] private GameObject m_playerLookCenter;
+    [SerializeField] private Light m_additionalSphashLight;
     [SerializeField] private float m_lightUpdateTime = 0.2f;
 
     private PlayerSkills m_playerSkills;
@@ -22,6 +23,10 @@ public class PlayerLightController : MonoBehaviour {
         if (!m_playerLightCenter)
         {
             m_playerLightCenter = gameObject;
+        }
+        if (!m_playerSkills)
+        {
+            m_playerSkills = GetComponent<PlayerSkills>();
         }
 
         m_lastUpdateTime = -1.0f;
@@ -49,6 +54,11 @@ public class PlayerLightController : MonoBehaviour {
             //Debug.Log("Current light intensity: " + m_currentLightIntensity);
         }
 	}
+
+    public Light GetSplashLight()
+    {
+        return m_additionalSphashLight;
+    }
 
     public Vector3 GetPlayerLookCenter()
     {

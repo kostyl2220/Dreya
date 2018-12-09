@@ -11,13 +11,8 @@ public class SplashLight : Skill {
 
     private float m_currentIntensity;
     private float m_leftTime;
-    private float m_nextUpdate;
-    // Use this for initialization
-    new void Start () {
-        base.Start();
-	}
 
-    public virtual void Use()
+    public override void Use()
     {
         if (m_leftTime > 0)
         {
@@ -34,6 +29,20 @@ public class SplashLight : Skill {
         m_currentIntensity = m_maxIntensity;
         m_light.gameObject.SetActive(true);
         m_light.intensity = m_maxIntensity;
+    }
+
+    public override float GetCooldown()
+    {
+        return m_cooldown;
+    }
+
+    public override void InitSkill(GameObject player)
+    {
+        PlayerLightController plc = player.GetComponent<PlayerLightController>();
+        if (plc)
+        {
+            m_light = plc.GetSplashLight();
+        }
     }
 
     // Update is called once per frame
