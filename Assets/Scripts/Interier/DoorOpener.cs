@@ -11,14 +11,20 @@ public class DoorOpener : Switcher {
     [SerializeField] private float m_maxRotateAngle = 100.0f;
     [SerializeField] private float m_doorAngleSpeed = 100.0f;
     [SerializeField] private float m_doorSinglePush = 3.0f;
-    [SerializeField] private Vector3 m_clockwiseDirection = new Vector3(1.0f, 0.0f, 0.0f);
-
+    
     private float m_doorRotateAngle;
     private float m_endAngle;
     private float m_rotationTimeLeft;
     private float m_doorOpenSide;
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    new void Start ()
+    {
+        if (!m_player)
+        {
+            m_player = GameObject.Find("Player");
+        }
+
 		if (!m_animator)
         {
             m_animator = GetComponent<Animator>();
@@ -46,12 +52,13 @@ public class DoorOpener : Switcher {
         bool clockwiseDirection = InClockwise(collision.transform);
         m_doorOpenSide = (clockwiseDirection ? 1.0f : -1.0f);
         m_endAngle = m_doorRotateAngle + m_doorSinglePush * m_doorOpenSide;
+        m_endAngle = Mathf.Clamp(m_endAngle, -m_maxRotateAngle, m_maxRotateAngle);
         m_rotationTimeLeft = m_doorSinglePush / m_doorAngleSpeed;
     }
 
-    private bool InClockwise(Transform transform)
+    private bool InClockwise(Transform tr)
     {
-        return Vector3.Angle(transform.forward, m_clockwiseDirection) < 90.0f;
+        return Vector3.Angle(tr.forward, -transform.up) < 90.0f;
     }
 
     // Update is called once per frame
@@ -68,10 +75,6 @@ public class DoorOpener : Switcher {
 
     protected override void Switched()
     {
-        /*if (m_animator)
-        {
-            m_animator.SetBool(m_parameterName, m_switchValue);
-        }*/
         MoveDoor(InClockwise(m_player.transform));
     }
 }
