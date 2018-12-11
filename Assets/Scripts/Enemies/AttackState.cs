@@ -8,6 +8,8 @@ public class AttackState : FollowState
     [SerializeField] private float m_contactDamage = 8.0f;
     [SerializeField] private float m_cooldown = 1.0f;
     [SerializeField] private float m_contactAttackDistance = 0.3f;
+    [SerializeField] private string m_attackStateName = "Attack";
+    [SerializeField] private Animator m_anim;
     [SerializeField] private SimpleBrain.MinMaxRange m_AttackDistance = new SimpleBrain.MinMaxRange( 0.2f, 1.0f );
     //[SerializeField] private float 
 
@@ -55,6 +57,10 @@ public class AttackState : FollowState
             // perform active damage
             if (distanceToPlayer < m_contactAttackDistance && m_attackCooldownTime < Time.time)
             {
+                if (m_anim)
+                {
+                    m_anim.SetTrigger(m_attackStateName);
+                }
                 m_attackCooldownTime = Time.time + m_cooldown;
                 fearable.ChangeFear(m_contactDamage);
             }

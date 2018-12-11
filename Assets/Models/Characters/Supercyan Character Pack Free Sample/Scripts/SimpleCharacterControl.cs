@@ -184,7 +184,7 @@ public class SimpleCharacterControl : MonoBehaviour {
     public void PickUp()
     {
        // m_animator.SetBool("pickup", true);
-        //m_animator.SetTrigger("PickUp");
+        m_animator.SetTrigger("Pickup");
     }
 
     private void JumpingAndLanding()

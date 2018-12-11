@@ -4,21 +4,8 @@ using UnityEngine;
 
 public class DecisionState : SimpleBrainState {
 
-    [System.Serializable]
-    public class StateChance
-    {
-        [SerializeField]
-        public SimpleBrainState state;
-        [SerializeField]
-        public float chance;
-
-        public void SetNewChance(float newChance)
-        {
-            this.chance = newChance;
-        }
-    }
-
-    [SerializeField] private List<StateChance> m_chances;
+    [SerializeField] private DecisionStateNode m_calmNode;
+    [SerializeField] private DecisionStateNode m_searchNode;
     [SerializeField] private float m_searchTime = 5.0f;
 
     private SimpleBrainState m_returnState;
@@ -33,12 +20,23 @@ public class DecisionState : SimpleBrainState {
 
     public override bool UpdateState()
     {
-        if (m_searching && Time.time > m_lastUpdateTime)
+        if (m_searching)
         {
-            m_searching = false;
-            return SetNewState(m_returnState);
+            if (Time.time > m_lastUpdateTime)
+            {
+                m_searching = false;
+                return SetNewState(m_returnState);
+            }
+            if (m_searchNode)
+            {
+                return SetNewState(m_searchNode.GetNextRandomAIState());
+            }
         }
-        return SetNewState(GetNextRandomAIState());
+        if (m_calmNode)
+        {
+            return SetNewState(m_calmNode.GetNextRandomAIState());
+        }
+        return SetNewState(m_returnState);
     }
 
     public void SetSearch()
@@ -54,38 +52,9 @@ public class DecisionState : SimpleBrainState {
 
     protected override void Finalized()
     {
-        NormalizeChances();
         if (!m_returnState)
         {
             m_returnState = GetComponent<ReturnState>();
-        }
-    }
-
-    SimpleBrainState GetNextRandomAIState()
-    {
-        float random = Random.Range(0.0f, 1.0f);
-        float curVal = 0;
-        for (int i = 0; i < m_chances.Count; ++i)
-        {
-            curVal += m_chances[i].chance;
-            if (random <= curVal)
-            {
-                return m_chances[i].state;
-            }
-        }
-        return null;
-    }
-
-    void NormalizeChances()
-    {
-        float sum = 0;
-        foreach (var stateChance in m_chances)
-        {
-            sum += stateChance.chance;
-        }
-        for (int i = 0; i < m_chances.Count; ++i)
-        {
-            m_chances[i].SetNewChance(m_chances[i].chance / sum);
         }
     }
 }

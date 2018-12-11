@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//should realize only
+// - GetStateName
+// - InnerUpdateState
+// - Setup
+
 public abstract class WanderState : SimpleBrainState {
 
     protected SimpleBrainState m_decisionState;

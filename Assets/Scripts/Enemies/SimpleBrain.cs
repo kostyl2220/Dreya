@@ -46,6 +46,16 @@ public class SimpleBrain : MonoBehaviour {
         m_isAgressive = agresive;
     }
 
+    public void SetAgentSpeed(float speed)
+    {
+        m_agent.speed = speed;
+    }
+
+    public bool IsAgressive()
+    {
+        return m_isAgressive;
+    }
+
     public void SetState(SimpleBrainState state)
     {
         m_currentState = state;
@@ -110,6 +120,11 @@ public class SimpleBrain : MonoBehaviour {
         {
             m_agent.destination = transform.position;
         }
+        if (!m_player)
+        {
+            m_player = GameObject.FindGameObjectWithTag("Player");
+        }
+
         SetState(m_startupState);
     }
 
