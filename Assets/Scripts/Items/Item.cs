@@ -70,11 +70,11 @@ public class Item : Pickable
         return m_isPicked;
     }
 
-    protected override void PickedByPlayer(GameObject player)
+    protected override bool PickedByPlayer(GameObject player)
     {
         if (m_isPicked)
         {
-            return;
+            return false;
         }
 
         Inventory inventory = player.GetComponent<Inventory>();
@@ -82,6 +82,8 @@ public class Item : Pickable
         {
             inventory.PickItem(this);
         }
+
+        return true;
     }
 
     protected override bool ShouldDestroyAfterInteraction()

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Assets.Scripts;
 
 public class SimpleCharacterControl : MonoBehaviour {
 
@@ -31,12 +32,18 @@ public class SimpleCharacterControl : MonoBehaviour {
     private float m_jumpTimeStamp = 0;
     private float m_minJumpInterval = 0.25f;
 
+    private bool m_disabledMovement;
     private bool m_isWalking;
     private bool m_isGrounded;
     private List<Collider> m_collisions = new List<Collider>();
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.layer == GameDefs.PLAYER_LAYER)
+        {
+            return;
+        }
+
         ContactPoint[] contactPoints = collision.contacts;
         for(int i = 0; i < contactPoints.Length; i++)
         {
@@ -52,6 +59,11 @@ public class SimpleCharacterControl : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
+        if (collision.gameObject.layer == GameDefs.PLAYER_LAYER)
+        {
+            return;
+        }
+
         ContactPoint[] contactPoints = collision.contacts;
         bool validSurfaceNormal = false;
         for (int i = 0; i < contactPoints.Length; i++)
@@ -81,7 +93,12 @@ public class SimpleCharacterControl : MonoBehaviour {
 
     private void OnCollisionExit(Collision collision)
     {
-        if(m_collisions.Contains(collision.collider))
+        if (collision.gameObject.layer == GameDefs.PLAYER_LAYER)
+        {
+            return;
+        }
+
+        if (m_collisions.Contains(collision.collider))
         {
             m_collisions.Remove(collision.collider);
         }
@@ -91,19 +108,22 @@ public class SimpleCharacterControl : MonoBehaviour {
 	void Update () {
         m_animator.SetBool("Grounded", m_isGrounded);
 
-        switch(m_controlMode)
+        if (!m_disabledMovement)
         {
-            case ControlMode.Direct:
-                DirectUpdate();
-                break;
+            switch (m_controlMode)
+            {
+                case ControlMode.Direct:
+                    DirectUpdate();
+                    break;
 
-            case ControlMode.Tank:
-                TankUpdate();
-                break;
+                case ControlMode.Tank:
+                    TankUpdate();
+                    break;
 
-            default:
-                Debug.LogError("Unsupported state");
-                break;
+                default:
+                    Debug.LogError("Unsupported state");
+                    break;
+            }
         }
 
         m_wasGrounded = m_isGrounded;
@@ -133,6 +153,15 @@ public class SimpleCharacterControl : MonoBehaviour {
         m_animator.SetFloat("MoveSpeed", m_currentV);
 
         JumpingAndLanding();
+    }
+
+    public void SetDisabledMovement(bool disable)
+    {
+        m_disabledMovement = disable;
+        if (disable)
+        {
+            m_animator.SetFloat("MoveSpeed", 0.0f);
+        }
     }
 
     public bool IsGrounded()
@@ -191,7 +220,7 @@ public class SimpleCharacterControl : MonoBehaviour {
     {
         bool jumpCooldownOver = (Time.time - m_jumpTimeStamp) >= m_minJumpInterval;
 
-        if (jumpCooldownOver && m_isGrounded && Input.GetKey(KeyCode.Space))
+        if (jumpCooldownOver && m_isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             m_jumpTimeStamp = Time.time;
             m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);

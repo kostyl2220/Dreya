@@ -40,8 +40,14 @@ public class WalkState : WanderState
 
     protected override void Finalized()
     {
-        m_chasingState = GetComponent<ReturnState>();
-        m_decisionState = GetComponent<IdleState>();
+        if (!m_chasingState)
+        {
+            m_chasingState = GetComponent<ReturnState>();
+        }
+        if (!m_decisionState)
+        {
+            m_decisionState = GetComponent<IdleState>();
+        }
     }
 
     protected override bool InnerUpdateState()

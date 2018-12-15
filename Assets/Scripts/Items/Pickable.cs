@@ -4,15 +4,17 @@ using UnityEngine;
 
 public abstract class Pickable : Interactable
 {
-    protected abstract void PickedByPlayer(GameObject player);
+    protected abstract bool PickedByPlayer(GameObject player);
 
     protected override void InteractWithPlayer(GameObject player)
     {
-        SimpleCharacterControl scc = player.GetComponent<SimpleCharacterControl>();
-        if (scc)
+        if (PickedByPlayer(player))
         {
-            scc.PickUp();
-            PickedByPlayer(player);
+            SimpleCharacterControl scc = player.GetComponent<SimpleCharacterControl>();
+            if (scc)
+            {
+                scc.PickUp();
+            }
         }
     }
 

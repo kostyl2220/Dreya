@@ -9,7 +9,7 @@ using UnityEngine;
 
 public abstract class WanderState : SimpleBrainState {
 
-    protected SimpleBrainState m_decisionState;
+    [SerializeField] protected SimpleBrainState m_decisionState;
     protected SimpleBrainState m_chasingState;
 
     protected float m_endActionTime;
@@ -34,7 +34,13 @@ public abstract class WanderState : SimpleBrainState {
 
     protected override void Finalized()
     {
-        m_decisionState = GetComponent<DecisionState>();
-        m_chasingState = GetComponent<ReturnState>();
+        if (!m_decisionState)
+        {
+            m_decisionState = GetComponent<DecisionState>();
+        }
+        if (!m_chasingState)
+        {
+            m_chasingState = GetComponent<ReturnState>();
+        }
     }
 }

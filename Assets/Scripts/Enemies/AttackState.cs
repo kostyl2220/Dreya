@@ -30,7 +30,7 @@ public class AttackState : FollowState
     {
         float distanceToPlayer = Vector3.Distance(transform.position, m_parent.m_player.transform.position);
 
-        if (!m_parent.SeePlayer() || distanceToPlayer > m_AttackDistance.max)
+        if (!m_parent.SeePlayer(false) || distanceToPlayer > m_AttackDistance.max)
         {
             return SetNewState(m_chasingState);
         }

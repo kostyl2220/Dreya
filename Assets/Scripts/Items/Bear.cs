@@ -7,12 +7,14 @@ public class Bear : Pickable
 
     [SerializeField] private float m_decreaseFearValue;
 
-    protected override void PickedByPlayer(GameObject player)
+    protected override bool PickedByPlayer(GameObject player)
     {
         var fearable = player.GetComponent<Fearable>();
         if (fearable)
         {
             fearable.ChangeFear(-m_decreaseFearValue);
         }
+
+        return true;
     }
 }

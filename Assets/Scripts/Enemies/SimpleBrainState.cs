@@ -19,7 +19,7 @@ public abstract class SimpleBrainState : MonoBehaviour
     //Runs only once, when stage is loaded
     protected abstract void Finalized();
 
-    private void Start()
+    private void Awake()
     {
         m_parent = GetComponent<SimpleBrain>();
         Finalized();

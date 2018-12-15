@@ -125,6 +125,7 @@ GameObject:
   - component: {fileID: 114260852076374316}
   - component: {fileID: 114085117101852142}
   - component: {fileID: 114090981002487098}
+  - component: {fileID: 114171369931867324}
   m_Layer: 0
   m_Name: Crawler
   m_TagString: Untagged
@@ -1801,6 +1802,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_searchStep: 1
+--- !u!114 &114171369931867324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108232596106816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114e80f25b98f5a41b8ed34f682c4ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_agent: {fileID: 0}
 --- !u!114 &114190025946685828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1910,6 +1923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pathUpdateTime: 0.2
   m_endToPlayerDistance: 1
+  m_attackState: {fileID: 0}
 --- !u!114 &114836525659830868
 MonoBehaviour:
   m_ObjectHideFlags: 1

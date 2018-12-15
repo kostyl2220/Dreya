@@ -11,6 +11,16 @@ public class DamageReceiveComponent : MonoBehaviour {
     [SerializeField] private float m_maxHP;
     private float m_currentHP;
 
+    public float GetHP()
+    {
+        return m_currentHP;
+    }
+
+    public float GetMaxHP()
+    {
+        return m_maxHP;
+    }
+
     public bool GetDamage(float damage, Vector3 pushForce)
     {
         m_currentHP -= damage;

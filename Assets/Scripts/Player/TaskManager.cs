@@ -29,19 +29,22 @@ public class TaskManager : MonoBehaviour {
         }
     }
 
+    public void SetupTasks()
+    {
+        // Code to remove
+        if (m_taskBar && m_tasks.Count >= 2)
+        {
+            AddTask(m_tasks[1]);
+            AddTask(m_tasks[0]);
+        }
+    }
+
 	// Use this for initialization
 	void Start ()
     {
         for (int i = 0; i < m_tasks.Count; ++i)
         {
             m_tasks[i].SetId(i);
-        }
-
-        // Code to remove
-        if (m_taskBar && m_tasks.Count >= 2)
-        {
-            AddTask(m_tasks[1]);
-            AddTask(m_tasks[0]);
         }
     }
 

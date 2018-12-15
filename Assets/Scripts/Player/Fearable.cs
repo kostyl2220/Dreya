@@ -11,6 +11,9 @@ public class Fearable : MonoBehaviour {
     [SerializeField] private Image m_fearBar;
     [SerializeField] private Text m_fearText;
 
+    public delegate void PlayerScaredEvent(float coef);
+    public event PlayerScaredEvent OnScared;
+
     private float m_currentFear;
     private float m_fearBarHeight;
     private PlayerSkills m_playerSkills;
@@ -19,6 +22,16 @@ public class Fearable : MonoBehaviour {
     {
         m_currentFear = Mathf.Clamp(GetFear() + fear, 0, GetMaxFear());
         UpdateHUD();
+
+        if (OnScared != null)
+        {
+            OnScared.Invoke(GetFearPersentage());
+        }
+    }
+
+    public void ResetFear()
+    {
+        m_currentFear = 0.0f;
     }
 
     private void UpdateHUD()

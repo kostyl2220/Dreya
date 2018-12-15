@@ -29,7 +29,7 @@ public class SimpleBrain : MonoBehaviour {
     [SerializeField] public GameObject m_player;
     [SerializeField] public bool m_enableDebug;
     public Vector3 m_lastPlayerMoveDirection { get; set; }
-    private NavMeshAgent m_agent;
+    [SerializeField] private MovementAgent m_agent;
 
     [SerializeField] private float m_rangeKoef = 0.4f;
     [SerializeField] private float m_agroRangeKoef = 1.8f;
@@ -48,7 +48,7 @@ public class SimpleBrain : MonoBehaviour {
 
     public void SetAgentSpeed(float speed)
     {
-        m_agent.speed = speed;
+        m_agent.SetSpeed(speed);
     }
 
     public bool IsAgressive()
@@ -68,7 +68,7 @@ public class SimpleBrain : MonoBehaviour {
 
     public float GetAgentRemainingDistance()
     {
-        return m_agent.remainingDistance;
+        return m_agent.GetRemainingDistance();
     }
 
     public void AgentForceStop()
@@ -85,10 +85,10 @@ public class SimpleBrain : MonoBehaviour {
         {
             finalPosition = hit.position;
         }
-        m_agent.destination = finalPosition;
+        m_agent.SetDestination(finalPosition);
     }
 
-    public bool SeePlayer()
+    public bool SeePlayer(bool checkRotation = true)
     {
         PlayerLightController plc = m_player.GetComponent<PlayerLightController>();
         float actualLookRange = (m_isAgressive ? m_agroRangeKoef : m_rangeKoef) * plc.GetCurrentIntensity();
@@ -98,7 +98,7 @@ public class SimpleBrain : MonoBehaviour {
         }
 
         float actualLookRangeAngle = (m_isAgressive ? m_agroLookAngle : m_lookAngle);
-        if (Vector3.Angle(m_player.transform.position - transform.position, transform.forward) > actualLookRangeAngle)
+        if (checkRotation && Vector3.Angle(m_player.transform.position - transform.position, transform.forward) > actualLookRangeAngle)
         {
             return false;
         }
@@ -115,23 +115,28 @@ public class SimpleBrain : MonoBehaviour {
 
     void Start ()
     {
-        m_agent = GetComponent<NavMeshAgent>();
-        if (m_agent)
+        if (!m_agent)
         {
-            m_agent.destination = transform.position;
+            m_agent = GetComponent<NavMeshMovementAgent>();
         }
         if (!m_player)
         {
-            m_player = GameObject.FindGameObjectWithTag("Player");
+            m_player = GameObject.Find("Player");
         }
 
-        SetState(m_startupState);
+        if (m_startupState)
+        {
+            SetState(m_startupState);
+        }
     }
 
     // Update is called once per frame
     void Update () {
-        m_currentState.UpdateState();
-	}
+        if (m_currentState)
+        {
+            m_currentState.UpdateState();
+        }
+    }
 
     void OnDrawGizmosSelected()
     {

@@ -60,6 +60,11 @@ public class LightManager : MonoBehaviour {
                 continue;
             }
 
+            if (!light.gameObject.activeInHierarchy)
+            {
+                continue;
+            }
+
             Vector3 direction = obj.transform.position - light.transform.position;
             float targetDistance = direction.magnitude;
 
@@ -75,10 +80,10 @@ public class LightManager : MonoBehaviour {
             }
         
             float addedIntensity = CalculateIntensityMultiplier(targetDistance, light.range) * light.intensity;
-            endIntensity += Mathf.Pow(addedIntensity, 2);
+            endIntensity += addedIntensity;
         }
 
-        return Mathf.Sqrt(endIntensity);
+        return endIntensity;
     }
 
     private float CalculateSpotLightIntensity(GameObject obj)
@@ -116,10 +121,10 @@ public class LightManager : MonoBehaviour {
             float targetRadius = Mathf.Tan(Mathf.Deg2Rad * targetAngle);
 
             float addedIntensity = CalculateIntensityMultiplier(frontDistance, light.range, targetRadius, maxRadius) * light.intensity;
-            endIntensity += Mathf.Pow(addedIntensity, 2);
+            endIntensity += addedIntensity;
         }
 
-        return Mathf.Sqrt(endIntensity);
+        return endIntensity;
     }
 
 	// Use this for initialization
