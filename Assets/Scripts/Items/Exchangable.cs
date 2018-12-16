@@ -17,7 +17,7 @@ public class Exchangable : Item {
   
     private Color m_startColor;
     // Use this for initialization
-    new void Start()
+    protected new void Start()
     {
         base.Start();
         if (!m_renderer)
@@ -78,8 +78,10 @@ public class Exchangable : Item {
     }
 
     // Update is called once per frame
-    void Update ()
+    protected new void Update ()
     {
+        base.Update();
+
         if (!m_blinking)
         {
             return;

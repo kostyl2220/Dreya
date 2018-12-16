@@ -15,7 +15,7 @@ public class Weapon : Exchangable
     private bool m_isAttacking;
     private AttackComponent m_attackComp;
     // Use this for initialization
-    new void Start ()
+    protected new void Start ()
     {
         base.Start();
         if (!m_animation)
@@ -39,8 +39,10 @@ public class Weapon : Exchangable
         m_isAttacking = false;
     }
 
-    private void OnTriggerEnter(Collider collider)
+    protected new void OnTriggerEnter(Collider collider)
     {
+        base.OnTriggerEnter(collider);
+
         if (!m_isAttacking)
         {
             return;

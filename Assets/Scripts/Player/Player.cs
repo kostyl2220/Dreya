@@ -8,6 +8,7 @@ public class Player : MonoBehaviour {
     [SerializeField] private Transform m_startTransorm;
 
     private Fearable m_fearable;
+    private int m_revealedCount;
 	// Use this for initialization
 	void Start () {
         m_fearable = GetComponent<Fearable>();
@@ -16,6 +17,16 @@ public class Player : MonoBehaviour {
             m_fearable.OnScared += (float fear) => { ProcessFear(fear); };
         }
         SetupPlayer();
+    }
+
+    public void ChangeReveal(bool revealed)
+    {
+        m_revealedCount += (revealed ? 1 : -1);
+    }
+
+    public bool IsRevealed()
+    {
+        return m_revealedCount > 0;
     }
 
     public void SetTransform(Transform transform)
@@ -39,6 +50,7 @@ public class Player : MonoBehaviour {
 
     private void SetupPlayer()
     {
+        m_revealedCount = 0;
         if (m_startTransorm)
         {
             gameObject.transform.position = m_startTransorm.position;

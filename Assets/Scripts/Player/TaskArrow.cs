@@ -5,10 +5,12 @@ using UnityEngine;
 public class TaskArrow : MonoBehaviour {
 
 
+    private float m_initHeight; // light Hack
     private TaskManager.TaskInfo m_taskInfo;
     // Use this for initialization
 	void Start () {
         gameObject.SetActive(m_taskInfo != null);
+        m_initHeight = gameObject.transform.position[1];
     }
 
     public void SetNewTask(TaskManager.TaskInfo taskInfo)
@@ -24,6 +26,7 @@ public class TaskArrow : MonoBehaviour {
             return;
         }
 
+        transform.position = new Vector3(transform.position[0], m_initHeight, transform.position[2]);
         Vector3 taskDirection = m_taskInfo.m_pos.position - transform.position;
         taskDirection.y = 0;
         transform.rotation = Quaternion.LookRotation(taskDirection.normalized, Vector3.up);

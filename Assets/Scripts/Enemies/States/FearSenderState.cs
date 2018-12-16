@@ -54,7 +54,7 @@ public class FearSenderState : SimpleBrainState {
 
     private void SendFear()
     {
-        GameObject fear = Instantiate(m_fear, transform);
+        GameObject fear = Instantiate(m_fear, transform.position, transform.rotation);
         fear.transform.Rotate(Vector3.up, Random.Range(0.0f, 360.0f));
     }
 }

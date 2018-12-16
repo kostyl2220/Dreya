@@ -43,7 +43,17 @@ public class SimpleBrain : MonoBehaviour {
 
     public void SetAgressive(bool agresive)
     {
+        if (m_isAgressive == agresive)
+        {
+            return;
+        }
+
         m_isAgressive = agresive;
+        Player player = m_player.GetComponent<Player>();
+        if (player)
+        {
+            player.ChangeReveal(agresive);
+        }
     }
 
     public void SetAgentSpeed(float speed)
@@ -64,6 +74,11 @@ public class SimpleBrain : MonoBehaviour {
         {
             Debug.Log(m_currentState.GetStateName());
         }
+    }
+
+    public float GetAgentLookAngleDiff()
+    {
+        return m_agent.GetAgentLookAngleDiff();
     }
 
     public float GetAgentRemainingDistance()

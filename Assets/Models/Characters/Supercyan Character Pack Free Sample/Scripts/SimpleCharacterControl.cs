@@ -10,9 +10,13 @@ public class SimpleCharacterControl : MonoBehaviour {
         Direct
     }
 
+    [SerializeField] private string m_locomotionState = "Movement";
     [SerializeField] private float m_moveSpeed = 2;
     [SerializeField] private float m_turnSpeed = 200;
     [SerializeField] private float m_jumpForce = 4;
+    [SerializeField] private float m_dodgeForceAngle = 30.0f;
+    [SerializeField] private float m_dodgeCooldown = 1.0f;
+    [SerializeField] private float m_dodgeForce = 3;
     [SerializeField] private Animator m_animator;
     [SerializeField] private Rigidbody m_rigidBody;
 
@@ -35,6 +39,8 @@ public class SimpleCharacterControl : MonoBehaviour {
     private bool m_disabledMovement;
     private bool m_isWalking;
     private bool m_isGrounded;
+    private float m_nextDodgeAvailable;
+    private Vector3 m_walkSide;
     private List<Collider> m_collisions = new List<Collider>();
 
     private void OnCollisionEnter(Collision collision)
@@ -105,11 +111,36 @@ public class SimpleCharacterControl : MonoBehaviour {
         if (m_collisions.Count == 0) { m_isGrounded = false; }
     }
 
-	void Update () {
+    private void PerformJump()
+    {
+        m_jumpTimeStamp = Time.time;
+
+        Player player = GetComponent<Player>();
+        if (player && player.IsRevealed())
+        {
+            if (Time.time < m_nextDodgeAvailable)
+            {
+                return;
+            }
+
+            m_nextDodgeAvailable = Time.time + m_dodgeCooldown;
+            Vector3 dodgeVector = Vector3.RotateTowards(m_walkSide, Vector3.up, m_dodgeForceAngle * Mathf.Deg2Rad, 0.0f);
+            m_rigidBody.AddForce(dodgeVector * m_dodgeForce, ForceMode.Impulse);
+            return;
+        }
+        m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
+    }
+
+    private void Start()
+    {
+        m_nextDodgeAvailable = 0.0f;
+    }
+
+    void Update () {
         m_animator.SetBool("Grounded", m_isGrounded);
 
         if (!m_disabledMovement)
-        {
+        {         
             switch (m_controlMode)
             {
                 case ControlMode.Direct:
@@ -131,8 +162,16 @@ public class SimpleCharacterControl : MonoBehaviour {
 
     private void TankUpdate()
     {
+        UpdateLookAt();
+
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
+
+        if (v == 0.0f && h == 0.0f)
+        {
+            m_animator.SetFloat("MoveSpeed", 0.0f);
+            return;
+        }
 
         bool walk = Input.GetKey(KeyCode.LeftShift);
 
@@ -142,15 +181,29 @@ public class SimpleCharacterControl : MonoBehaviour {
         } else if(walk)
         {
             v *= m_walkScale;
+            h *= m_walkScale;
         }
 
         m_currentV = Mathf.Lerp(m_currentV, v, Time.deltaTime * m_interpolation);
         m_currentH = Mathf.Lerp(m_currentH, h, Time.deltaTime * m_interpolation);
 
-        transform.position += transform.forward * m_currentV * m_moveSpeed * Time.deltaTime;
-        transform.Rotate(0, m_currentH * m_turnSpeed * Time.deltaTime, 0);
+        float sumDirectionValue = (Mathf.Abs(m_currentV) + Mathf.Abs(m_currentH));
+        float currentSpeedValue = Mathf.Sqrt(m_moveSpeed * m_moveSpeed / sumDirectionValue);
 
-        m_animator.SetFloat("MoveSpeed", m_currentV);
+        transform.position += Vector3.forward * m_currentV * currentSpeedValue * Time.deltaTime;
+        transform.position += Vector3.right * m_currentH * currentSpeedValue * Time.deltaTime;
+
+        m_walkSide = Vector3.forward * m_currentV + Vector3.right * m_currentH;
+        m_walkSide.Normalize();
+        float angleToPlayer = Vector3.Angle(m_walkSide, transform.forward); 
+
+        float moveSide = Mathf.Max(Mathf.Abs(m_currentV), Mathf.Abs(m_currentH));
+        if (angleToPlayer > 90.0f)
+        {
+            moveSide *= -1;
+        }
+
+        m_animator.SetFloat("MoveSpeed", moveSide);
 
         JumpingAndLanding();
     }
@@ -216,14 +269,24 @@ public class SimpleCharacterControl : MonoBehaviour {
         m_animator.SetTrigger("Pickup");
     }
 
+    private void UpdateLookAt()
+    {
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = -(transform.position.x - Camera.main.transform.position.x);
+        Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
+        mousePos.x = mousePos.x - objectPos.x;
+        mousePos.y = mousePos.y - objectPos.y;
+        float angle = -Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg + 90.0f;
+        transform.rotation = Quaternion.Euler(new Vector3(0, angle, 0));
+    }
+
     private void JumpingAndLanding()
     {
         bool jumpCooldownOver = (Time.time - m_jumpTimeStamp) >= m_minJumpInterval;
 
         if (jumpCooldownOver && m_isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            m_jumpTimeStamp = Time.time;
-            m_rigidBody.AddForce(Vector3.up * m_jumpForce, ForceMode.Impulse);
+            PerformJump();
         }
 
         if (!m_wasGrounded && m_isGrounded)

@@ -8,6 +8,8 @@ namespace Assets.Scripts
 {
     static class GameDefs
     {
+        public static bool USE_HIGHLIGHT = false;
+
         public static int PLAYER_LAYER = LayerMask.NameToLayer("Player");
         public static int ENEMY_LAYER = LayerMask.NameToLayer("Enemy");
 

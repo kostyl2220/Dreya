@@ -14,14 +14,4 @@ public class ObjectInRegion : Interactable {
             m_switchers.ForEach((Switcher s) => { s.Switch(); } );
         }
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -6,6 +6,11 @@ using UnityEngine.AI;
 public class NavMeshMovementAgent : MovementAgent {
     [SerializeField] private NavMeshAgent m_agent;
 
+    public override float GetAgentLookAngleDiff()
+    {
+        return Vector3.Angle(transform.forward, (m_agent.steeringTarget - transform.position));
+    }
+
     public override float GetRemainingDistance()
     {
         return m_agent.remainingDistance;

@@ -7,6 +7,7 @@ public class FearSendPreparationState : SimpleBrainState
     [SerializeField] private GameObject m_fearDust;
     [SerializeField] private float m_waitTime = 1.0f;
 
+    private GameObject m_fearDustInstance;
     private SimpleBrainState m_senderState;
     private float m_setNextStateTime;
 
@@ -17,7 +18,18 @@ public class FearSendPreparationState : SimpleBrainState
 
     public void ActivateSmoke(bool activate)
     {
-        m_fearDust.SetActive(activate);
+        if (activate)
+        {
+            if (m_fearDustInstance)
+            {
+                Destroy(m_fearDustInstance);
+            }
+            m_fearDustInstance = Instantiate(m_fearDust, transform.position, transform.rotation, transform);
+        }
+        else if (m_fearDustInstance)
+        {
+            m_fearDustInstance.SetActive(activate);
+        }
     }
 
     public override void Setup()

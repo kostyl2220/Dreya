@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33454647941778228}
   - component: {fileID: 23881829504199120}
   - component: {fileID: 65208173775629548}
-  - component: {fileID: 135114675414715918}
   - component: {fileID: 114552226137396592}
   - component: {fileID: 111597829041254750}
   - component: {fileID: 135289005230660386}
@@ -56,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707111045766726}
   m_LocalRotation: {x: -0.3780694, y: -0.65450877, z: -0.5319313, w: -0.3817472}
-  m_LocalPosition: {x: -14.25, y: -4.097, z: -12.394}
+  m_LocalPosition: {x: 23.305, y: -3.855, z: -0.42}
   m_LocalScale: {x: 10.00002, y: 10.000023, z: 10.000002}
   m_Children:
   - {fileID: 4708072278032710}
@@ -171,7 +170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5d5d0531ae5de448e5820d1ebcffb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_pickingCollider: {fileID: 135114675414715918}
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  m_pickingCollider: {fileID: 135289005230660386}
   m_bodyCollider: {fileID: 65208173775629548}
   m_rootElement: {fileID: 1707111045766726}
   m_rigidbody: {fileID: 54929267008964964}
@@ -184,18 +189,6 @@ MonoBehaviour:
   m_pushForce: 0
   m_animation: {fileID: 111597829041254750}
   m_simpleAttack: SimpleAttack
---- !u!135 &135114675414715918
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1426628356357508}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.043641206
-  m_Center: {x: -0.00000006462283, y: -0.0000005947457, z: 0.043644737}
 --- !u!135 &135289005230660386
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -206,5 +199,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.043641206
+  m_Radius: 0.1
   m_Center: {x: -0.00000006462283, y: -0.0000005947457, z: 0.043644737}

@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 4013797238368118}
   - component: {fileID: 33533627686015800}
   - component: {fileID: 23350027243711372}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Progress
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 114714740658934852}
   - component: {fileID: 114537697975624932}
   - component: {fileID: 114211117570065452}
+  - component: {fileID: 114457788866008186}
   m_Layer: 16
   m_Name: Player
   m_TagString: Player
@@ -325,7 +326,7 @@ GameObject:
   - component: {fileID: 4115656605635100}
   - component: {fileID: 33748800817899684}
   - component: {fileID: 23596685041108930}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: TaskArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +419,7 @@ GameObject:
   - component: {fileID: 4648599158997242}
   - component: {fileID: 33110548257797018}
   - component: {fileID: 23069422954845266}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: TaskArrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -855,7 +856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4033001579317580}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: ProgressCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -993,7 +994,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1287581464210262}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -16.145, y: -4.173, z: -12.287}
+  m_LocalPosition: {x: 21.15, y: -4.173, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4988659475060186}
@@ -1905,6 +1906,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b704a22e77293b74c817bd2649f0eac2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_endWindow: {fileID: 0}
+  m_startTransorm: {fileID: 0}
 --- !u!114 &114211117570065452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1948,10 +1951,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_moveSpeed: 2
   m_turnSpeed: 200
-  m_jumpForce: 4
+  m_jumpForce: 40
+  m_dodgeForceAngle: 90
+  m_dodgeCooldown: 1
+  m_dodgeForce: 20
   m_animator: {fileID: 95661103675248476}
   m_rigidBody: {fileID: 54271908819471676}
-  m_controlMode: 1
+  m_controlMode: 0
 --- !u!114 &114346358705044646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1967,6 +1973,18 @@ MonoBehaviour:
   m_point2: {fileID: 4293840160884302}
   m_castRadius: 0.2
   m_maxCarryDistance: 0.5
+--- !u!114 &114457788866008186
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1287581464210262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 645fa3679c31da042880e3b26ebc084f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxPickAngle: 75
 --- !u!114 &114537697975624932
 MonoBehaviour:
   m_ObjectHideFlags: 1

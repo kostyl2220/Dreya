@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public abstract class HoldInteractable : MonoBehaviour {
+public abstract class HoldInteractable : ItemOutline
+{
 
     [SerializeField] private float m_processTime = 2.0f;
     private ProgressCircle m_playerProgressCircle;
@@ -44,6 +45,11 @@ public abstract class HoldInteractable : MonoBehaviour {
                 m_playerProgressCircle.ResetProgress();
             }
         }
+    }
+
+    protected void Start()
+    {
+        SetOutlineEnabled(false);
     }
 
     protected virtual bool ShouldDestroyAfterInteraction()

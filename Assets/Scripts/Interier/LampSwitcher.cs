@@ -16,14 +16,4 @@ public class LampSwitcher : Interactable {
             m_lightSource.intensity = (m_enabled ? m_maxIntensity : 0.0f);
         }
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

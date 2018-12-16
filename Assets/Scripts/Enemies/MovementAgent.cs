@@ -8,7 +8,8 @@ public abstract class MovementAgent : MonoBehaviour {
     public abstract void SetSpeed(float speed);
     public abstract float GetRemainingDistance();
     public abstract void SetDestination(Vector3 destination);
-    
+    public abstract float GetAgentLookAngleDiff();
+
     // Use this for initialization
     void Start () {
 		

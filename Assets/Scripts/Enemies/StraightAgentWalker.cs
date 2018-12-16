@@ -9,8 +9,14 @@ public class StraightAgentWalker : MovementAgent {
 
     [SerializeField] private float m_speed = 2.0f;
     [SerializeField] private float m_rotationSpeed = 120.0f;
-
+    [SerializeField] private float m_startSlowDown = 0.2f;
+    
     private Vector3 m_destination;
+
+    public override float GetAgentLookAngleDiff()
+    {
+        return Vector3.Angle(transform.forward, (m_destination - transform.position));
+    }
 
     public override float GetRemainingDistance()
     {
@@ -24,9 +30,7 @@ public class StraightAgentWalker : MovementAgent {
 
     public override void SetDestination(Vector3 destination)
     {
-        m_destination = destination;
-
-      
+        m_destination = destination;   
     }
 
     public override void SetSpeed(float speed)
@@ -38,6 +42,16 @@ public class StraightAgentWalker : MovementAgent {
     void Start ()
     {
 
+    }
+
+    private float GetActualSpeed()
+    {
+        float distanceToTarget = Vector3.Distance(transform.position, m_destination);
+        if (distanceToTarget > m_startSlowDown)
+        {
+            return m_speed;
+        }
+        return m_speed * distanceToTarget / m_startSlowDown;      
     }
 	
 	// Update is called once per frame
@@ -51,6 +65,6 @@ public class StraightAgentWalker : MovementAgent {
             return;
         }
 
-        gameObject.transform.position += gameObject.transform.forward * m_speed * Time.deltaTime;
+        gameObject.transform.position += gameObject.transform.forward * GetActualSpeed() * Time.deltaTime;
 	}
 }
