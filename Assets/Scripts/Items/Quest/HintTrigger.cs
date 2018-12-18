@@ -12,12 +12,12 @@ public class HintTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer != GameDefs.PLAYER_LAYER)
+        if (other.gameObject.tag != GameDefs.PLAYER_TAG)
         {
             return;
         }
 
-        Player player = GetComponent<Player>();
+        Player player = other.gameObject.GetComponent<Player>();
         if (!player)
         {
             return;

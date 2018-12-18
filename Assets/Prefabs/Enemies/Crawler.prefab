@@ -79,6 +79,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4017711538399230}
+  - component: {fileID: 135409423743915800}
+  - component: {fileID: 114931765848578622}
   m_Layer: 0
   m_Name: Bone.037
   m_TagString: Untagged
@@ -608,6 +610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4377858976051714}
   - component: {fileID: 95158615950448770}
+  - component: {fileID: 114001436534445088}
   m_Layer: 0
   m_Name: crawler
   m_TagString: Untagged
@@ -1312,7 +1315,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1115947730768716}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0.254, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 4828909301839290}
@@ -1729,6 +1732,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114001436534445088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625230875486736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9961eba9e9e5e4842994ed2257eee9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_attack: {fileID: 114199296336189524}
 --- !u!114 &114052215324656220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1740,6 +1755,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ee1a3f855ea2f428c224ea63d08e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_decisionState: {fileID: 0}
   m_countOfRotations:
     min: 2
     max: 6
@@ -1776,7 +1792,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_animator: {fileID: 95158615950448770}
   m_calmMaxSpeed: 1.2
-  m_agressiveMaxSpeed: 2
+  m_agressiveMaxSpeed: 1.6
   m_brain: {fileID: 114324949174831440}
   m_speedName: MoveSpeed
 --- !u!114 &114115183610099404
@@ -1838,12 +1854,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pathUpdateTime: 0.2
-  m_passiveFearDamage: 3
+  m_passiveFearDamage: 0.5
   m_contactDamage: 5
   m_cooldown: 0.8
   m_contactAttackDistance: 0.3
   m_attackStateName: Attack
   m_anim: {fileID: 95158615950448770}
+  m_detector: {fileID: 114931765848578622}
   m_AttackDistance:
     min: 0.2
     max: 1
@@ -1876,6 +1893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb069bd11dd3b4d4cbb268b3d8e963bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_decisionState: {fileID: 0}
   m_waitTime:
     min: 1
     max: 2.2
@@ -1891,9 +1909,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
-  m_enableDebug: 1
+  m_enableDebug: 0
+  m_agent: {fileID: 0}
   m_rangeKoef: 0.4
-  m_agroRangeKoef: 1.8
+  m_agroRangeKoef: 0.7
   m_lookAngle: 60
   m_agroLookAngle: 120
   m_startupState: {fileID: 114319563495457712}
@@ -1923,6 +1942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pathUpdateTime: 0.2
   m_endToPlayerDistance: 1
+  m_searchingState: {fileID: 0}
   m_attackState: {fileID: 0}
 --- !u!114 &114836525659830868
 MonoBehaviour:
@@ -1949,9 +1969,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c2c83388ba9444da3294be529bd616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_decisionState: {fileID: 0}
   m_walkRadius:
     min: 2
     max: 3
+--- !u!114 &114931765848578622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052598052009622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a991eae04f954c444a4ada890364677e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114931939633691618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1966,6 +1998,18 @@ MonoBehaviour:
   m_calmNode: {fileID: 114260852076374316}
   m_searchNode: {fileID: 114085117101852142}
   m_searchTime: 10
+--- !u!135 &135409423743915800
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1052598052009622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.02
+  m_Center: {x: 0.01, y: -0.01, z: 0}
 --- !u!137 &137335088126668036
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotationState : WanderState {
 
-    [SerializeField] private SimpleBrain.MinMaxRange m_countOfRotations = new SimpleBrain.MinMaxRange(2.0f, 6.0f);
+    [SerializeField] private SimpleBrain.MinMaxRange m_countOfRotations = new SimpleBrain.MinMaxRange(2.0f, 5.0f);
     [SerializeField] private SimpleBrain.MinMaxRange m_angle = new SimpleBrain.MinMaxRange(15.0f, 78.0f);
     [SerializeField] private float m_rotationSpeed = 40.0f;
 
@@ -57,7 +57,7 @@ public class RotationState : WanderState {
 
     public override void Setup()
     {
-        m_currentCountOfRotations = (int)m_countOfRotations.GetInRange();
+        m_currentCountOfRotations = m_countOfRotations.GetInRangeInt();
         m_startAngle = transform.rotation;
         m_clockwise = Random.Range(0, 2) == 0;
         SetupNewRotation();

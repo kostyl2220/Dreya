@@ -18,14 +18,4 @@ public class PlayerTaskManager : MonoBehaviour {
         TaskArrow arrow = (isMain ? m_mainArrow : m_auxiliaryArrow);
         arrow.SetNewTask(null);
     }
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

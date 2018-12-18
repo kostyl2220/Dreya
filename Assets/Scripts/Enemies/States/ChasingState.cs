@@ -6,7 +6,7 @@ public class ChasingState : FollowState
 {
     [SerializeField] private float m_endToPlayerDistance = 1.0f;
 
-    private SimpleBrainState m_searchingState;
+    [SerializeField] private SimpleBrainState m_searchingState;
     [SerializeField] private SimpleBrainState m_attackState;
 
     public override string GetStateName()
@@ -29,7 +29,10 @@ public class ChasingState : FollowState
 
     protected override void Finalized()
     {
-        m_searchingState = GetComponent<SearchingState>();
+        if (!m_searchingState)
+        {
+            m_searchingState = GetComponent<SearchingState>();
+        }
         if (!m_attackState)
         {
             m_attackState = GetComponent<AttackState>();

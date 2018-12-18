@@ -47,7 +47,7 @@ public class Carrier : MonoBehaviour {
             return; 
         }
 
-        if (!(m_scc.IsGrounded() && m_scc.IsWalking()))
+        if (!(m_scc.IsWalking()))
         {
             ResetCariable();
             return;

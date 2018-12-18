@@ -71,7 +71,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4480235407624050}
   - component: {fileID: 95197996775756766}
-  - component: {fileID: 135933491371326774}
   m_Layer: 0
   m_Name: TimsAssets_Door
   m_TagString: Untagged
@@ -157,6 +156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4558814197431252}
+  - component: {fileID: 114643398414293310}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -273,14 +273,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1695476903791860}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: -0.5}
-  m_LocalPosition: {x: -11.635186, y: -4.027398, z: -19.626522}
-  m_LocalScale: {x: 0.5000006, y: 0.50000036, z: 0.50000024}
+  m_LocalRotation: {x: -0, y: 0.70710695, z: 0.70710665, w: 0}
+  m_LocalPosition: {x: -14.919396, y: -4.042211, z: -11.472519}
+  m_LocalScale: {x: 0.50000024, y: 0.5000002, z: 0.50000024}
   m_Children:
   - {fileID: 4480235407624050}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.99999, y: 90, z: 0}
 --- !u!4 &4595801893467566
 Transform:
   m_ObjectHideFlags: 1
@@ -717,6 +717,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114643398414293310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1695476903791860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fc47b1c17654a4b9c5ef8cf709c2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_switchValue: 0
+  m_door: {fileID: 114904366471613192}
 --- !u!114 &114663970584468452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -734,10 +747,12 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+  m_taskId: -1
   m_consumeItems: 1
   m_shouldPlayerHave: []
-  m_itemsToSwitch:
+  m_successItemsToSwitch:
   - {fileID: 114904366471613192}
+  m_failItemsToSwitch: []
 --- !u!114 &114904366471613192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -768,15 +783,3 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: -0.7, y: 0.15339398, z: -0.7630019}
---- !u!135 &135933491371326774
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1280518122637670}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.05846
-  m_Center: {x: 0.00000013314728, y: -0.00000006657366, z: 0.5584603}

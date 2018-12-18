@@ -69,6 +69,11 @@ public class DialogManager : MonoBehaviour {
         enable.gameObject.SetActive(true);
         disable.gameObject.SetActive(false);
         enable.SetText(m_dialogStart.m_replica);
+
+        if (m_dialogStart.m_lifeTime > 0.0f)
+        {
+            m_nextReplicaTime = Time.time + m_dialogStart.m_lifeTime;
+        }
     }
 
     private void ShowNextReplica()
@@ -85,11 +90,6 @@ public class DialogManager : MonoBehaviour {
             return;
         }
         m_dialogStart = nextVar;
-
-        if (m_dialogStart.m_lifeTime > 0.0f)
-        {
-            m_nextReplicaTime = Time.time + m_dialogStart.m_lifeTime;
-        }
     }
 
 	// Update is called once per frame

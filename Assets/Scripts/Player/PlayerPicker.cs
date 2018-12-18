@@ -46,6 +46,7 @@ public class PlayerPicker : MonoBehaviour {
 
     private Interactable FindClosestInteractable()
     {
+        DeleteAllEmpty();
         if (m_currentInteractions.Count == 0)
         {
             return null;
@@ -97,7 +98,6 @@ public class PlayerPicker : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.F))
         {
-            DeleteAllEmpty();
             Interactable interactable = FindClosestInteractable();
 
             if (interactable)

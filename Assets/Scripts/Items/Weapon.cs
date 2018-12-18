@@ -55,6 +55,7 @@ public class Weapon : Exchangable
             Vector3 attackDirection = (collider.gameObject.transform.position - m_attackComp.GetAttacker().transform.position).normalized;
             drc.GetDamage(m_attackComp.PerformCriticalHit() ? INFINITE_DAMAGE : actualDamage, attackDirection * m_pushForce);
             m_attackComp.HitPerformed(actualDamage);
+            m_isAttacking = false;
         }
     }
 

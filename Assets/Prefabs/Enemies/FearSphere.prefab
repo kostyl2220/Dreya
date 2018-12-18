@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_pathUpdateTime: 0.2
   m_endToPlayerDistance: 1.5
+  m_searchingState: {fileID: 0}
   m_attackState: {fileID: 114273656379872390}
 --- !u!114 &114857381226128668
 MonoBehaviour:
@@ -262,12 +263,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_player: {fileID: 0}
-  m_enableDebug: 1
+  m_enableDebug: 0
   m_agent: {fileID: 114313644643528402}
-  m_rangeKoef: 0.4
-  m_agroRangeKoef: 1.8
-  m_lookAngle: 60
-  m_agroLookAngle: 120
+  m_rangeKoef: 5
+  m_agroRangeKoef: 10
+  m_lookAngle: 360
+  m_agroLookAngle: 360
   m_startupState: {fileID: 114954956257239290}
   m_lookCenter: {fileID: 4445347363482194}
 --- !u!114 &114871785495289862
@@ -815,7 +816,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 500000
+    maxNumParticles: 500
     size3D: 0
     rotation3D: 0
     gravityModifier:
