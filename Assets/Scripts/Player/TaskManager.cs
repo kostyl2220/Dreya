@@ -8,6 +8,8 @@ public class TaskManager : MonoBehaviour {
     [SerializeField] private List<TaskInfo> m_tasks;
     [SerializeField] private PlayerTaskManager m_ptm;
 
+    private List<int> m_activeTasks;
+
     [System.Serializable]
     public class TaskInfo
     {
@@ -34,35 +36,38 @@ public class TaskManager : MonoBehaviour {
         // Code to remove
         if (m_taskBar && m_tasks.Count >= 2)
         {
-            AddTask(m_tasks[1]);
-            AddTask(m_tasks[0]);
+            AddTask(0);
         }
     }
 
 	// Use this for initialization
 	void Start ()
     {
+        m_activeTasks = new List<int>();
         for (int i = 0; i < m_tasks.Count; ++i)
         {
             m_tasks[i].SetId(i);
         }
     }
 
-    void AddTask(TaskInfo taskInfo)
+    public bool IsTaskActive(int taskId)
     {
+        return m_activeTasks.Contains(taskId);
+    }
+
+    public void AddTask(int taskId)
+    {
+        m_activeTasks.Add(taskId);
+        TaskInfo taskInfo = m_tasks[taskId];
         m_taskBar.AddTask(taskInfo);
         m_ptm.SetTask(taskInfo);
     }
 
-    void RemoveTask(int taskId)
+    public void RemoveTask(int taskId)
     {
+        m_activeTasks.Add(taskId);
         TaskInfo info = m_tasks[taskId];
         m_taskBar.CompleteTask(info.m_taskId, info.m_isMain);
         m_ptm.ResetTask(info.m_isMain);
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }

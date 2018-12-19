@@ -8,6 +8,8 @@ public class FearSenderState : SimpleBrainState {
     [SerializeField] private GameObject m_fear;
     [SerializeField] private float m_sendingTimeForOne = 1.2f;
     [SerializeField] private SimpleBrain.MinMaxRange m_fearCount = new SimpleBrain.MinMaxRange(3, 4);
+    [SerializeField] private Animator m_animator;
+    [SerializeField] private string m_bossAttackTrigger = "FearCastEnd";
 
     private int m_countLeft;
     private float m_nextSendTime;
@@ -34,6 +36,10 @@ public class FearSenderState : SimpleBrainState {
         if (m_countLeft == 0)
         {
             m_senderPrepareState.ActivateSmoke(false);
+            if (m_animator)
+            {
+                m_animator.SetTrigger(m_bossAttackTrigger);
+            }
             return SetNewState(m_nextState);
         }
 

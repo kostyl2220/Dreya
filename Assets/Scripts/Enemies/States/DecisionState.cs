@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class DecisionState : SimpleBrainState {
 
-    [SerializeField] private DecisionStateNode m_calmNode;
-    [SerializeField] private DecisionStateNode m_searchNode;
-    [SerializeField] private float m_searchTime = 5.0f;
+    [SerializeField] protected DecisionStateNode m_calmNode;
+    [SerializeField] protected DecisionStateNode m_searchNode;
+    [SerializeField] protected float m_searchTime = 5.0f;
 
     private SimpleBrainState m_returnState;
 
-    private float m_lastUpdateTime;
+    protected float m_lastUpdateTime;
     private bool m_searching;
 
     public override string GetStateName()
@@ -45,16 +45,16 @@ public class DecisionState : SimpleBrainState {
         m_lastUpdateTime = Time.time + m_searchTime;
     }
 
-    public override void Setup()
-    {
-
-    }
-
     protected override void Finalized()
     {
         if (!m_returnState)
         {
             m_returnState = GetComponent<ReturnState>();
         }
+    }
+
+    public override void Setup()
+    {
+        
     }
 }

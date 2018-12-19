@@ -31,6 +31,16 @@ public class NavMeshMovementAgent : MovementAgent {
         m_agent.speed = speed;
     }
 
+    public override void SetUpdatePosition(bool update)
+    {
+        m_agent.updatePosition = update;
+    }
+
+    public override void SetUpdateRotation(bool update)
+    {
+        m_agent.updateRotation = update;
+    }
+
     // Use this for initialization
     void Start () {
 		if (!m_agent)

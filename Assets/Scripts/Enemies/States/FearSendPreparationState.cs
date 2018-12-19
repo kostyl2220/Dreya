@@ -6,6 +6,8 @@ public class FearSendPreparationState : SimpleBrainState
 {
     [SerializeField] private GameObject m_fearDust;
     [SerializeField] private float m_waitTime = 1.0f;
+    [SerializeField] private Animator m_animator;
+    [SerializeField] private string m_bossAttackTrigger = "BossAttack2";
 
     private GameObject m_fearDustInstance;
     private SimpleBrainState m_senderState;
@@ -36,6 +38,10 @@ public class FearSendPreparationState : SimpleBrainState
     {
         ActivateSmoke(true);
         m_setNextStateTime = Time.time + m_waitTime;
+        if (m_animator)
+        {
+            m_animator.SetTrigger(m_bossAttackTrigger);
+        }
     }
 
     public override bool UpdateState()

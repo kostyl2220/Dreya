@@ -173,12 +173,12 @@ public class SimpleCharacterControl : MonoBehaviour {
             return;
         }
 
-        bool walk = Input.GetKey(KeyCode.LeftShift);
+        m_isWalking = Input.GetKey(KeyCode.LeftShift);
 
         if (v < 0) {
-            if (walk) { v *= m_backwardsWalkScale; }
+            if (m_isWalking) { v *= m_backwardsWalkScale; }
             else { v *= m_backwardRunScale; }
-        } else if(walk)
+        } else if(m_isWalking)
         {
             v *= m_walkScale;
             h *= m_walkScale;

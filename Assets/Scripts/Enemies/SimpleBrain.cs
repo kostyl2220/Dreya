@@ -24,7 +24,13 @@ public class SimpleBrain : MonoBehaviour {
         {
             return Random.Range(min, max);
         }
+
+        public int GetInRangeInt()
+        {
+            return Random.Range((int)min, (int)max + 1);
+        }
     }
+
 
     [SerializeField] public GameObject m_player;
     [SerializeField] public bool m_enableDebug;
@@ -54,6 +60,16 @@ public class SimpleBrain : MonoBehaviour {
         {
             player.ChangeReveal(agresive);
         }
+    }
+
+    public void AgentSetUpdateRotation(bool update)
+    {
+        m_agent.SetUpdateRotation(update);
+    }
+
+    public void AgentSetUpdatePosition(bool update)
+    {
+        m_agent.SetUpdatePosition(update);
     }
 
     public void SetAgentSpeed(float speed)
@@ -155,8 +171,11 @@ public class SimpleBrain : MonoBehaviour {
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        PlayerLightController plc = m_player.GetComponent<PlayerLightController>();
-        Gizmos.DrawWireSphere(transform.position, m_rangeKoef * plc.GetCurrentIntensity());
+        if (m_player)
+        {
+            Gizmos.color = Color.red;
+            PlayerLightController plc = m_player.GetComponent<PlayerLightController>();
+            Gizmos.DrawWireSphere(transform.position, m_rangeKoef * plc.GetCurrentIntensity());
+        }
     }
 }

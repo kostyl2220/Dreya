@@ -10,7 +10,9 @@ public class StraightAgentWalker : MovementAgent {
     [SerializeField] private float m_speed = 2.0f;
     [SerializeField] private float m_rotationSpeed = 120.0f;
     [SerializeField] private float m_startSlowDown = 0.2f;
-    
+
+    private bool m_updateRotation;
+    private bool m_updatePosition;
     private Vector3 m_destination;
 
     public override float GetAgentLookAngleDiff()
@@ -41,7 +43,8 @@ public class StraightAgentWalker : MovementAgent {
     // Use this for initialization
     void Start ()
     {
-
+        m_updateRotation = true;
+        m_updatePosition = true;
     }
 
     private float GetActualSpeed()
@@ -57,14 +60,30 @@ public class StraightAgentWalker : MovementAgent {
 	// Update is called once per frame
 	void Update ()
     {
-        Quaternion endAngle = Quaternion.LookRotation(m_destination - transform.position);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, endAngle, m_rotationSpeed * Time.deltaTime);
+        if (m_updateRotation)
+        {
+            Quaternion endAngle = Quaternion.LookRotation(m_destination - transform.position);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, endAngle, m_rotationSpeed * Time.deltaTime);
+        }
 
         if (GetRemainingDistance() < EPSILON)
         {
             return;
         }
 
-        gameObject.transform.position += gameObject.transform.forward * GetActualSpeed() * Time.deltaTime;
+        if (m_updatePosition)
+        {
+            gameObject.transform.position += gameObject.transform.forward * GetActualSpeed() * Time.deltaTime;
+        }
 	}
+
+    public override void SetUpdateRotation(bool update)
+    {
+        m_updateRotation = update;
+    }
+
+    public override void SetUpdatePosition(bool update)
+    {
+        m_updatePosition = update;
+    }
 }

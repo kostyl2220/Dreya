@@ -21,7 +21,7 @@ public class DamageReceiveComponent : MonoBehaviour {
         return m_maxHP;
     }
 
-    public bool GetDamage(float damage, Vector3 pushForce)
+    public virtual bool GetDamage(float damage, Vector3 pushForce)
     {
         m_currentHP -= damage;
         bool isAlive = m_currentHP > 0.0f;
@@ -36,7 +36,7 @@ public class DamageReceiveComponent : MonoBehaviour {
     }
 
 	// Use this for initialization
-	void Start ()
+	protected void Start ()
     {
         m_currentHP = m_maxHP;	
 	}

@@ -6,7 +6,11 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public abstract class Interactable : ItemOutline {
 
+    [SerializeField] private int m_taskId = -1;
+    private TaskManager m_taskManager;
+
     protected abstract void InteractWithPlayer(GameObject player);
+
     protected bool m_isPicked;
 
     protected void OnTriggerEnter(Collider collision)
@@ -26,6 +30,21 @@ public abstract class Interactable : ItemOutline {
     public bool IsPicked()
     {
         return m_isPicked;
+    }
+
+    protected virtual bool CanInteractWithPlayer()
+    {
+        if (m_taskId == -1)
+        {
+            return true;
+        }
+
+        if (!m_taskManager)
+        {
+            return false;
+        }
+
+        return m_taskManager.IsTaskActive(m_taskId);
     }
 
     protected void OnTriggerExit(Collider collision)
@@ -57,6 +76,11 @@ public abstract class Interactable : ItemOutline {
 
     public void StartInteractionWithPlayer(GameObject player)
     {
+        if (!CanInteractWithPlayer())
+        {
+            return;
+        }
+
         InteractWithPlayer(player);
 
         if (ShouldDestroyAfterInteraction())
@@ -67,6 +91,7 @@ public abstract class Interactable : ItemOutline {
 
     protected void Start()
     {
+        m_taskManager = GameObject.Find("TaskManager").GetComponent<TaskManager>();
         SetOutlineEnabled(false);
     }
 

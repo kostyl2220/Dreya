@@ -18,15 +18,16 @@ public abstract class FollowState : SimpleBrainState
         }
     }
 
-    protected void ShouldUpdatePath()
+    protected bool ShouldUpdatePath()
     {
         if (Time.time < m_lastUpdateTime)
         {
-            return;
+            return false;
         }
 
         m_lastUpdateTime = Time.time + m_pathUpdateTime;
         m_parent.SetNewMovePosition(m_parent.m_player.transform.position);
         m_parent.m_lastPlayerMoveDirection = m_parent.transform.forward;
+        return true;
     }
 }
