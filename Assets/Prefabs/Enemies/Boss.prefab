@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_dyingTime: 1
   m_dyingMinScale: 0.3
-  m_afterDyingObject: {fileID: 1305144992844548, guid: 80b3f063ac8d6944ea80625a24de3ba6,
+  m_afterDyingObject: {fileID: 1320165934660942, guid: 35b8a12032c39c147a030326d8fe34c0,
     type: 2}
 --- !u!114 &114133611272990766
 MonoBehaviour:

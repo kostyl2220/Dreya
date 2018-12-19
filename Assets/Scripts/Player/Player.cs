@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    [SerializeField] private Switcher m_winWindow;
     [SerializeField] private GameObject m_endWindow;
     [SerializeField] private Transform m_startTransorm;
 
@@ -45,6 +46,16 @@ public class Player : MonoBehaviour {
             {
                 m_endWindow.SetActive(true);
             }
+        }
+    }
+
+    public void WinGame()
+    {
+        Time.timeScale = 0.0f;
+
+        if (m_winWindow)
+        {
+            m_winWindow.Switch();
         }
     }
 

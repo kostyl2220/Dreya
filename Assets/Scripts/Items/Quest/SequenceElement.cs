@@ -5,6 +5,7 @@ using UnityEngine;
 public class SequenceElement : Interactable {
 
     [SerializeField] private RightSequenceEnter m_sequence;
+    [SerializeField] private bool m_onlyPick = false;
 
     private int m_innerId;
 
@@ -22,7 +23,14 @@ public class SequenceElement : Interactable {
     {
         if (m_sequence)
         {
-            m_sequence.PressItem(m_innerId);
+            if (m_onlyPick)
+            {
+                m_sequence.PickItem(m_innerId);
+            }
+            else
+            {
+                m_sequence.PressItem(m_innerId);
+            }         
         }
     }
 }

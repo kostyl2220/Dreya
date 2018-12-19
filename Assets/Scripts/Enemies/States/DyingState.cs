@@ -28,7 +28,7 @@ public class DyingState : SimpleBrainState {
         {
             if (m_afterDyingObject)
             {
-                Instantiate(m_afterDyingObject, m_parent.transform);
+                Instantiate(m_afterDyingObject);
             }
             Destroy(gameObject);
             return true;

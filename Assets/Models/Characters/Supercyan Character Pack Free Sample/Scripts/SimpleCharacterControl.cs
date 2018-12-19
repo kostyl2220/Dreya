@@ -271,6 +271,11 @@ public class SimpleCharacterControl : MonoBehaviour {
 
     private void UpdateLookAt()
     {
+        if (Time.timeScale == 0.0)
+        {
+            return;
+        }
+
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = -(transform.position.x - Camera.main.transform.position.x);
         Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
