@@ -47,7 +47,7 @@ public class DyingState : SimpleBrainState {
         m_drc = gameObject.GetComponent<DamageReceiveComponent>();
         if (m_drc)
         {
-            m_drc.OnDeath += ((float damage, Vector3 pushForce) => { SetNewState(this); });
+            m_drc.OnDeath += (() => { SetNewState(this); });
         }
     }
 }

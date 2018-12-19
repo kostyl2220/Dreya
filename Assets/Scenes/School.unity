@@ -582,6 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!1001 &17968084
 Prefab:
@@ -898,6 +899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!4 &38471099 stripped
 Transform:
@@ -4308,6 +4310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 708914041}
 --- !u!1001 &179567291
 Prefab:
@@ -6027,6 +6030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &241453538
 BoxCollider:
@@ -6475,6 +6479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!4 &252984662 stripped
 Transform:
@@ -7420,6 +7425,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_light: {fileID: 589778644}
 --- !u!1001 &292150747
 Prefab:
@@ -9591,6 +9597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!4 &335602588 stripped
 Transform:
@@ -10077,6 +10084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!1001 &360900443
 Prefab:
@@ -11046,6 +11054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &403253103
 BoxCollider:
@@ -11370,6 +11379,105 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4439073749324708, guid: 048682dfb9e9cf649b9c05dfaa4129da,
     type: 2}
   m_PrefabInternal: {fileID: 409025494}
+--- !u!1 &409609697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 409609702}
+  - component: {fileID: 409609701}
+  - component: {fileID: 409609700}
+  - component: {fileID: 409609699}
+  - component: {fileID: 409609698}
+  m_Layer: 0
+  m_Name: Cube (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &409609698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409609697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62058f73836388848b7a04f12c656f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_killOnDeath: 1
+  m_maxHP: 10
+--- !u!65 &409609699
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409609697}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &409609700
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409609697}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &409609701
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409609697}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &409609702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409609697}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.449, y: 1.414, z: 16.687}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &411677234
 GameObject:
   m_ObjectHideFlags: 0
@@ -11515,6 +11623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &412636436
 BoxCollider:
@@ -13454,6 +13563,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &477328848
 BoxCollider:
@@ -14177,6 +14287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &497504753
 BoxCollider:
@@ -14369,6 +14480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!1 &503465321
 GameObject:
@@ -14904,6 +15016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &513293333
 BoxCollider:
@@ -15389,6 +15502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &533129292
 BoxCollider:
@@ -15785,6 +15899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_transparency: 0
 --- !u!65 &540900957
 BoxCollider:
@@ -16010,6 +16125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1fbea7bba056cd4c82653d9f3d1c88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+  m_taskId: -1
   m_listOfObjects:
   - {fileID: 777696669}
   - {fileID: 1937650754}
@@ -16053,6 +16175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_completedTask: 3
   m_nextTask: 4
   m_dialogToPlay: {fileID: 542984301}
@@ -16969,6 +17092,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &578175480
 BoxCollider:
@@ -19917,6 +20041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!1001 &677068901
 Prefab:
@@ -20186,6 +20311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &684079600
 BoxCollider:
@@ -21888,6 +22014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!1 &748949568
 GameObject:
@@ -22018,6 +22145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &750727735
 BoxCollider:
@@ -24157,6 +24285,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!4 &830839996 stripped
 Transform:
@@ -30342,6 +30471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1043843257
 BoxCollider:
@@ -32096,6 +32226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!114 &1098268779
 MonoBehaviour:
@@ -33003,6 +33134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1130308405
 BoxCollider:
@@ -34107,6 +34239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_completedTask: 1
   m_nextTask: 2
   m_dialogToPlay: {fileID: 1173019401}
@@ -34973,6 +35106,106 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4439073749324708, guid: 048682dfb9e9cf649b9c05dfaa4129da,
     type: 2}
   m_PrefabInternal: {fileID: 1195790787}
+--- !u!1 &1195849644
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1195849649}
+  - component: {fileID: 1195849648}
+  - component: {fileID: 1195849647}
+  - component: {fileID: 1195849646}
+  - component: {fileID: 1195849645}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1195849645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1195849644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41d6dd3f99ec894b80ab00a249cd54b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_switchValue: 0
+  m_oneTimeUse: 0
+  m_objectToEnable: {fileID: 0}
+--- !u!65 &1195849646
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1195849644}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1195849647
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1195849644}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1195849648
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1195849644}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1195849649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1195849644}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1207567850}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1196128459
 Prefab:
   m_ObjectHideFlags: 0
@@ -35388,6 +35621,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4767473441982418, guid: 91551a6944052e349a0f09a9e8946b19,
     type: 2}
   m_PrefabInternal: {fileID: 1205271797}
+--- !u!1 &1207567848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207567850}
+  - component: {fileID: 1207567849}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1207567849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207567848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c336a2b745f7f409aa69ce477ef2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_objectsToKill:
+  - {fileID: 1332986360}
+  - {fileID: 409609698}
+  m_shitchers:
+  - {fileID: 1195849645}
+--- !u!4 &1207567850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1207567848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.77, y: 1.594, z: 18.607}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1195849649}
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1218776144
 GameObject:
   m_ObjectHideFlags: 0
@@ -35637,6 +35916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1232338638
 BoxCollider:
@@ -36789,6 +37069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!1001 &1270427947
 Prefab:
@@ -37572,6 +37853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!1 &1283967610
 GameObject:
@@ -37696,6 +37978,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1286135128
 BoxCollider:
@@ -38333,6 +38616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1305547733
 BoxCollider:
@@ -38967,6 +39251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_completedTask: 2
   m_nextTask: 3
   m_dialogToPlay: {fileID: 1319623978}
@@ -39233,6 +39518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!1 &1330998548 stripped
 GameObject:
@@ -39392,6 +39678,105 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4439073749324708, guid: 048682dfb9e9cf649b9c05dfaa4129da,
     type: 2}
   m_PrefabInternal: {fileID: 1331308794}
+--- !u!1 &1332986359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1332986364}
+  - component: {fileID: 1332986363}
+  - component: {fileID: 1332986362}
+  - component: {fileID: 1332986361}
+  - component: {fileID: 1332986360}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1332986360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1332986359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62058f73836388848b7a04f12c656f5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_killOnDeath: 1
+  m_maxHP: 10
+--- !u!65 &1332986361
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1332986359}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1332986362
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1332986359}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1332986363
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1332986359}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1332986364
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1332986359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.839, y: 1.414, z: 16.687}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1334494935
 Prefab:
   m_ObjectHideFlags: 0
@@ -41481,6 +41866,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!1 &1390992261
 GameObject:
@@ -41841,6 +42227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1394662760
 BoxCollider:
@@ -42166,6 +42553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1401051743
 BoxCollider:
@@ -43675,6 +44063,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!1001 &1467521580
 Prefab:
@@ -43933,6 +44322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1474047526
 BoxCollider:
@@ -46187,6 +46577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!1 &1541688012
 GameObject:
@@ -46236,6 +46627,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!1001 &1542364858
 Prefab:
@@ -48067,6 +48459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_completedTask: 0
   m_nextTask: 1
   m_dialogToPlay: {fileID: 1595007278}
@@ -50398,6 +50791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_manager: {fileID: 213887122}
   m_dialog: {fileID: 1516836710}
   m_enemyToTalk: {fileID: 312677850}
@@ -50742,6 +51136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!1001 &1690028741
 Prefab:
@@ -52680,6 +53075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1761568101
 BoxCollider:
@@ -53010,6 +53406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1771559012
 BoxCollider:
@@ -53680,6 +54077,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1785031161
 BoxCollider:
@@ -54971,6 +55369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1821132649
 BoxCollider:
@@ -58315,6 +58714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &1971590574
 BoxCollider:
@@ -59427,6 +59827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &2033452299
 BoxCollider:
@@ -60513,6 +60914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!1 &2068839774
 GameObject:
@@ -60664,6 +61066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!1001 &2070149208
 Prefab:
@@ -62626,6 +63029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!1001 &2133123271
 Prefab:
@@ -62717,6 +63121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 1
+  m_oneTimeUse: 0
   m_transparency: 0.2
 --- !u!65 &2134180871
 BoxCollider:
@@ -62930,6 +63335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!1001 &2145222045
 Prefab:

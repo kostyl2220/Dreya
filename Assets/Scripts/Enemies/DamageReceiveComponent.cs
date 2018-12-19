@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class DamageReceiveComponent : MonoBehaviour {
 
+    [SerializeField] private bool m_killOnDeath = false;
     public delegate void HitEvent(float damage, Vector3 pushForce);
-    public event HitEvent OnDeath;
+    public delegate void DeathEvent();
+    public event DeathEvent OnDeath;
     public event HitEvent OnHit;
 
     [SerializeField] private float m_maxHP;
@@ -26,10 +28,20 @@ public class DamageReceiveComponent : MonoBehaviour {
         m_currentHP -= damage;
         bool isAlive = m_currentHP > 0.0f;
 
-        HitEvent evnt = isAlive ? OnHit : OnDeath;
-        if (evnt != null)
+        if (isAlive)
         {
-            evnt.Invoke(damage, pushForce);
+            if (OnHit != null)
+            {
+                OnHit.Invoke(damage, pushForce);
+            }
+        }
+        else if (OnDeath != null)
+        {
+            OnDeath.Invoke();
+            if (m_killOnDeath)
+            {
+                Destroy(gameObject);
+            }
         }
 
         return isAlive;
