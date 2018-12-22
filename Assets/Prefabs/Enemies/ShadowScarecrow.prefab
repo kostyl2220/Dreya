@@ -766,6 +766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4240124133855256}
   - component: {fileID: 95440921930935144}
+  - component: {fileID: 114850896133643634}
   m_Layer: 0
   m_Name: scarecrow
   m_TagString: Untagged
@@ -1712,8 +1713,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1616401764472734}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.0000041723247}
-  m_LocalPosition: {x: -2.7474256, y: 1.2399516, z: 22.68613}
+  m_LocalRotation: {x: 0.000000004898775, y: 0.7435858, z: -0.000000004484751, w: -0.6686406}
+  m_LocalPosition: {x: -6.159602, y: 1.2399516, z: 18.615604}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4641048316602526}
@@ -2489,6 +2490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_waitTime:
     min: 1
     max: 3
@@ -2516,6 +2518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_walkRadius:
     min: 2
     max: 5
@@ -2555,6 +2558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pathUpdateTime: 0.2
+  m_rotationSpeed: 120
   m_passiveFearDamage: 0
   m_contactDamage: 5
   m_cooldown: 1
@@ -2660,7 +2664,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3d09b032bc6ba44b98bca5cf75de6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHP: 0
+  m_tagGamageName: Any
+  m_killOnDeath: 0
+  m_maxHP: 3
   m_parent: {fileID: 0}
 --- !u!114 &114657876306637780
 MonoBehaviour:
@@ -2674,6 +2680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_countOfRotations:
     min: 2
     max: 6
@@ -2710,6 +2717,18 @@ MonoBehaviour:
     chance: 0.4
   - state: {fileID: 114657876306637780}
     chance: 0.3333333
+--- !u!114 &114850896133643634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1565565288701810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9961eba9e9e5e4842994ed2257eee9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_attack: {fileID: 114252436740808186}
 --- !u!114 &114880220975539972
 MonoBehaviour:
   m_ObjectHideFlags: 1

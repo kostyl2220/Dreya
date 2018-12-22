@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Menu : MonoBehaviour {
     [SerializeField] private GameObject m_HUD;
@@ -9,6 +10,11 @@ public class Menu : MonoBehaviour {
 	void Start () {
         Time.timeScale = 0.0f;
 	}
+
+    public void ResetFocus()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+    }
 
     public void StartGame()
     {

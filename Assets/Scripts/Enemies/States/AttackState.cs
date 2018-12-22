@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AttackState : FollowState
 {
+    [SerializeField] private float m_rotationSpeed = 120.0f;
     [SerializeField] private float m_passiveFearDamage = 3.0f;
     [SerializeField] private float m_contactDamage = 8.0f;
     [SerializeField] private float m_cooldown = 1.0f;
@@ -54,6 +55,11 @@ public class AttackState : FollowState
 
     public override bool UpdateState()
     {
+        {
+            Quaternion endAngle = Quaternion.LookRotation(m_parent.GetAgentDestination() - transform.position);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, endAngle, m_rotationSpeed * Time.deltaTime);
+        }
+
         if (m_isAttacking)
         {
             return false;

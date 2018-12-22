@@ -11,10 +11,10 @@ public class ParentDamageReceive : DamageReceiveComponent {
         m_parent = parent;
     }
 
-    public override bool GetDamage(float damage, Vector3 pushForce)
+    public override bool GetDamage(float damage, Vector3 pushForce, GameObject attacker)
     {
-        bool alive = base.GetDamage(damage, pushForce);
-        m_parent.GetDamage(damage, pushForce);
+        bool alive = base.GetDamage(damage, pushForce, attacker);
+        m_parent.GetDamage(damage, pushForce, attacker);
         return alive;
     }
 }

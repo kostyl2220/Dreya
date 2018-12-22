@@ -10,14 +10,9 @@ using UnityEngine;
 public abstract class WanderState : SimpleBrainState {
 
     [SerializeField] protected SimpleBrainState m_decisionState;
-    protected SimpleBrainState m_chasingState;
+    [SerializeField] protected SimpleBrainState m_chasingState;
 
     protected float m_endActionTime;
-
-    public void SetNextDecisionState(SimpleBrainState nextState)
-    {
-        m_decisionState = nextState;
-    }
 
     protected abstract bool InnerUpdateState();
 
@@ -26,6 +21,12 @@ public abstract class WanderState : SimpleBrainState {
         if (m_parent.SeePlayer())
         {
             m_parent.SetAgressive(true);
+
+            if (!m_chasingState)
+            {
+                m_chasingState = GetComponent<ReturnState>();
+            }
+
             return SetNewState(m_chasingState);
         }
 

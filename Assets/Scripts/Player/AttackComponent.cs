@@ -110,6 +110,8 @@ public class AttackComponent : MonoBehaviour {
         m_lastHitCooldown = Time.time + m_rightHandWeapon.m_cooldown;
         //m_staticAttackPoint.transform.position = m_rightHandSlot.transform.position;
         m_rightHandWeapon.GetRoot().transform.SetParent(m_staticAttackPoint.transform);
+        m_rightHandWeapon.GetRoot().transform.localPosition = Vector3.zero;
+        m_rightHandWeapon.GetRoot().transform.localRotation = Quaternion.identity;
         m_rightHandWeapon.Hit();
     }
 

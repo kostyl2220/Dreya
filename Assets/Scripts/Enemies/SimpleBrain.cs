@@ -62,6 +62,11 @@ public class SimpleBrain : MonoBehaviour {
         }
     }
 
+    public Vector3 GetAgentDestination()
+    {
+        return m_agent.GetDestination();
+    }
+
     public void AgentSetUpdateRotation(bool update)
     {
         m_agent.SetUpdateRotation(update);

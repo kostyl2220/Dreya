@@ -91,6 +91,11 @@ public class Inventory : MonoBehaviour {
         return items.TrueForAll((Item i) => { return m_items.Contains(i); });
     }
 
+    public Item AtLeastOneExists(List<Item> items)
+    {         
+        return items.Find((Item i) => { return m_items.Contains(i); });
+    }
+
     // Update is called once per frame
     void Update ()
     {

@@ -11,6 +11,7 @@ public abstract class MovementAgent : MonoBehaviour {
     public abstract float GetAgentLookAngleDiff();
     public abstract void SetUpdateRotation(bool update);
     public abstract void SetUpdatePosition(bool update);
+    public abstract Vector3 GetDestination();
 
     // Use this for initialization
     void Start () {

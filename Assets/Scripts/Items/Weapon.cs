@@ -49,11 +49,17 @@ public class Weapon : Exchangable
         }
 
         DamageReceiveComponent drc = collider.gameObject.GetComponent<DamageReceiveComponent>();
+
         if (drc)
         {
+            if (!drc.CanBeDamaged(gameObject.tag))
+            {
+                return;
+            }
+
             float actualDamage = m_damage;
             Vector3 attackDirection = (collider.gameObject.transform.position - m_attackComp.GetAttacker().transform.position).normalized;
-            drc.GetDamage(m_attackComp.PerformCriticalHit() ? INFINITE_DAMAGE : actualDamage, attackDirection * m_pushForce);
+            drc.GetDamage(m_attackComp.PerformCriticalHit() ? INFINITE_DAMAGE : actualDamage, attackDirection * m_pushForce, m_attackComp.gameObject);
             m_attackComp.HitPerformed(actualDamage);
             m_isAttacking = false;
         }

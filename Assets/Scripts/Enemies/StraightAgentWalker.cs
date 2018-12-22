@@ -86,4 +86,9 @@ public class StraightAgentWalker : MovementAgent {
     {
         m_updatePosition = update;
     }
+
+    public override Vector3 GetDestination()
+    {
+        return m_destination;
+    }
 }

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class HintAndQuest : Switcher
 {
-    [SerializeField] private int m_completedTask;
-    [SerializeField] private int m_nextTask;
+    static int INVALID_TASK_ID = -1;
+
+    [SerializeField] private int m_completedTask = INVALID_TASK_ID;
+    [SerializeField] private int m_nextTask = INVALID_TASK_ID;
     [SerializeField] private DialogElement m_dialogToPlay;
     [SerializeField] private DialogManager m_dialogManager;
     [SerializeField] private TaskManager m_taskManager;
@@ -20,7 +22,7 @@ public class HintAndQuest : Switcher
             m_dialogManager.SetDialog(m_dialogToPlay);
         }
 
-        if (!m_taskIsGiven && m_taskManager)
+        if (!m_taskIsGiven && m_taskManager && m_completedTask != INVALID_TASK_ID)
         {
             m_taskIsGiven = true;
             m_taskManager.RemoveTask(m_completedTask);

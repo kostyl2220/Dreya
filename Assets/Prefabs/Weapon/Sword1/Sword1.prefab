@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4296797980061476}
   - component: {fileID: 54929267008964964}
+  - component: {fileID: 114542663309878322}
   m_Layer: 16
   m_Name: Sword1
   m_TagString: Untagged
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1707111045766726}
   m_LocalRotation: {x: -0.3780694, y: -0.65450877, z: -0.5319313, w: -0.3817472}
-  m_LocalPosition: {x: 23.305, y: -3.855, z: -0.42}
+  m_LocalPosition: {x: 3.3023734, y: 1.2911712, z: 9.814722}
   m_LocalScale: {x: 10.00002, y: 10.000023, z: 10.000002}
   m_Children:
   - {fileID: 4708072278032710}
@@ -128,7 +129,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -139,7 +140,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1426628356357508}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.004552957, y: 0.0024639165, z: 0.087282404}
@@ -159,6 +160,18 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &114542663309878322
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1707111045766726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d865a93ea7077c5429704271366c5354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_weapon: {fileID: 114552226137396592}
 --- !u!114 &114552226137396592
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,6 +189,7 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+  m_taskId: -1
   m_pickingCollider: {fileID: 135289005230660386}
   m_bodyCollider: {fileID: 65208173775629548}
   m_rootElement: {fileID: 1707111045766726}
@@ -185,7 +199,7 @@ MonoBehaviour:
   m_countOfBlinkings: 3
   m_renderer: {fileID: 23881829504199120}
   m_cooldown: 1
-  m_damage: 2
+  m_damage: 5
   m_pushForce: 0
   m_animation: {fileID: 111597829041254750}
   m_simpleAttack: SimpleAttack
@@ -197,7 +211,7 @@ SphereCollider:
   m_GameObject: {fileID: 1426628356357508}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.1
   m_Center: {x: -0.00000006462283, y: -0.0000005947457, z: 0.043644737}
