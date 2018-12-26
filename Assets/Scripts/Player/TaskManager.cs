@@ -9,6 +9,7 @@ public class TaskManager : MonoBehaviour {
     [SerializeField] private PlayerTaskManager m_ptm;
 
     private List<int> m_activeTasks;
+    private List<int> m_completedTask;
 
     [System.Serializable]
     public class TaskInfo
@@ -43,6 +44,7 @@ public class TaskManager : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        m_completedTask = new List<int>();
         m_activeTasks = new List<int>();
         for (int i = 0; i < m_tasks.Count; ++i)
         {
@@ -52,7 +54,7 @@ public class TaskManager : MonoBehaviour {
 
     public bool IsTaskActive(int taskId)
     {
-        return m_activeTasks.Contains(taskId);
+        return m_activeTasks.Contains(taskId) || m_completedTask.Contains(taskId);
     }
 
     public void AddTask(int taskId)
@@ -65,9 +67,10 @@ public class TaskManager : MonoBehaviour {
 
     public void RemoveTask(int taskId)
     {
-        m_activeTasks.Add(taskId);
+        m_activeTasks.Remove(taskId);
         TaskInfo info = m_tasks[taskId];
         m_taskBar.CompleteTask(info.m_taskId, info.m_isMain);
         m_ptm.ResetTask(info.m_isMain);
+        m_completedTask.Add(taskId);
     }
 }

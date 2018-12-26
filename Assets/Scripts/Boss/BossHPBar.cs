@@ -9,9 +9,9 @@ public class BossHPBar : DamageReceiveComponent {
 
     private float m_healthBarWidth;
 
-    public override bool GetDamage(float damage, Vector3 pushForce)
+    public override bool GetDamage(float damage, Vector3 pushForce, GameObject attacker)
     {
-        bool isAlive = base.GetDamage(damage, pushForce);
+        bool isAlive = base.GetDamage(damage, pushForce, attacker);
 
         UpdateHUD();
 

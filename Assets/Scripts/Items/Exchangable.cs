@@ -53,7 +53,10 @@ public class Exchangable : Item {
         if (m_renderer)
         {
             m_startColor.a = transparency;
-            m_renderer.material.color = m_startColor;
+            if (m_renderer.material)
+            {
+                m_renderer.material.color = m_startColor;
+            }
         }
     }
 

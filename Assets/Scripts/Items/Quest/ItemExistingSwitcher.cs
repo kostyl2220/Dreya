@@ -8,6 +8,7 @@ public class ItemExistingSwitcher : Interactable {
     [SerializeField] private List<Item> m_shouldPlayerHave;
     [SerializeField] private List<Switcher> m_successItemsToSwitch;
     [SerializeField] private List<Switcher> m_failItemsToSwitch;
+    [SerializeField] private bool m_atleastOne = false;
 
     protected override void InteractWithPlayer(GameObject player)
     {
@@ -17,18 +18,38 @@ public class ItemExistingSwitcher : Interactable {
             return;
         }
 
+        //TODO REFACTOR
         Inventory inventory = player.GetComponent<Inventory>();
-        if (inventory && inventory.AllItemsExists(m_shouldPlayerHave))
+        if (!m_atleastOne)
         {
-            m_successItemsToSwitch.ForEach((Switcher s) => { s.Switch(); });
-            if (m_consumeItems)
+            if (inventory && inventory.AllItemsExists(m_shouldPlayerHave))
             {
-                m_shouldPlayerHave.ForEach((Item i) => inventory.ConsumeItem(i));
+                m_successItemsToSwitch.ForEach((Switcher s) => { s.Switch(); });
+                if (m_consumeItems)
+                {
+                    m_shouldPlayerHave.ForEach((Item i) => inventory.ConsumeItem(i));
+                }
+            }
+            else
+            {
+                m_failItemsToSwitch.ForEach((Switcher s) => { s.Switch(); });
             }
         }
         else
         {
-            m_failItemsToSwitch.ForEach((Switcher s) => { s.Switch(); });
+            Item item = inventory.AtLeastOneExists(m_shouldPlayerHave);
+            if (item)
+            {
+                m_successItemsToSwitch.ForEach((Switcher s) => { s.Switch(); });
+                if (m_consumeItems)
+                {
+                    inventory.ConsumeItem(item);
+                }
+            }
+            else
+            {
+                m_failItemsToSwitch.ForEach((Switcher s) => { s.Switch(); });
+            }
         }
     }
 }

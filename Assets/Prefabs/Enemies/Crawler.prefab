@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 114085117101852142}
   - component: {fileID: 114090981002487098}
   - component: {fileID: 114171369931867324}
+  - component: {fileID: 136129372949339758}
   m_Layer: 0
   m_Name: Crawler
   m_TagString: Untagged
@@ -1565,8 +1566,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1108232596106816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.771, y: 1.273, z: -0.63}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 6.310003, y: -1.7270002, z: 16.459}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4377858976051714}
@@ -1756,6 +1757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_countOfRotations:
     min: 2
     max: 6
@@ -1854,15 +1856,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pathUpdateTime: 0.2
-  m_passiveFearDamage: 0.5
+  m_rotationSpeed: 120
+  m_passiveFearDamage: 0
   m_contactDamage: 5
   m_cooldown: 0.8
-  m_contactAttackDistance: 0.3
+  m_contactAttackDistance: 0.45
   m_attackStateName: Attack
   m_anim: {fileID: 95158615950448770}
   m_detector: {fileID: 114931765848578622}
   m_AttackDistance:
-    min: 0.2
+    min: 0.4
     max: 1
 --- !u!114 &114260852076374316
 MonoBehaviour:
@@ -1894,6 +1897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_waitTime:
     min: 1
     max: 2.2
@@ -1928,7 +1932,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62058f73836388848b7a04f12c656f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHP: 30
+  m_tagGamageName: Any
+  m_killOnDeath: 0
+  m_maxHP: 8
 --- !u!114 &114611999465681370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1970,6 +1976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_walkRadius:
     min: 2
     max: 3
@@ -2010,6 +2017,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.02
   m_Center: {x: 0.01, y: -0.01, z: 0}
+--- !u!136 &136129372949339758
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1108232596106816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.242
+  m_Height: 0.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!137 &137335088126668036
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

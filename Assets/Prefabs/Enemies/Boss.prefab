@@ -977,7 +977,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1260348062935130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.039, z: 0}
+  m_LocalPosition: {x: 0, y: 1.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4796675256538382}
@@ -1331,7 +1331,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406037378659910}
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: -0, y: 0, z: -3.54}
+  m_LocalPosition: {x: 0, y: -0, z: -0.033}
   m_LocalScale: {x: 1.16634, y: 0.85738325, z: 1}
   m_Children: []
   m_Father: {fileID: 4796675256538382}
@@ -1471,6 +1471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c82b9df804c4c418f2f35eabf66244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_killOnDeath: 0
   m_maxHP: 100
   m_healthBar: {fileID: 0}
 --- !u!114 &114116739499741368
@@ -1500,6 +1501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_objectToEnable: {fileID: 0}
 --- !u!114 &114167575035323256
 MonoBehaviour:
@@ -1600,6 +1602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_nextState: {fileID: 114771237246838682}
 --- !u!114 &114533889078310400
 MonoBehaviour:

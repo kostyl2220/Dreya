@@ -8,8 +8,6 @@ public class HPBar : MonoBehaviour
     [SerializeField] private RectTransform m_HPbar;
     [SerializeField] private Text m_HPtext;
     [SerializeField] private DamageReceiveComponent m_enemy;
-
-    private Canvas Can;
     //HP bar
     private float totalHPbarWidth;
 
@@ -27,7 +25,7 @@ public class HPBar : MonoBehaviour
             DrawHP(m_enemy.GetHP(), m_enemy.GetMaxHP());
             m_enemy.OnHit += (float damage, Vector3 pushForce) => { DrawHP(m_enemy.GetHP(), m_enemy.GetMaxHP()); };
         }
-        Can = gameObject.GetComponent<Canvas>();
+        //Can = gameObject.GetComponent<Canvas>();
     }
 
     // Update is called once per frame

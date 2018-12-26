@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 114904366471613192}
   - component: {fileID: 135197947249180742}
   - component: {fileID: 114663970584468452}
+  - component: {fileID: 208959700108412520}
   m_Layer: 0
   m_Name: Door_Wood
   m_TagString: Door
@@ -273,9 +274,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1695476903791860}
-  m_LocalRotation: {x: -0, y: 0.70710695, z: 0.70710665, w: 0}
-  m_LocalPosition: {x: -14.919396, y: -4.042211, z: -11.472519}
-  m_LocalScale: {x: 0.50000024, y: 0.5000002, z: 0.50000024}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: -0.5}
+  m_LocalPosition: {x: -2.7372415, y: -4.045211, z: -18.669514}
+  m_LocalScale: {x: 0.50000036, y: 0.5000002, z: 0.50000024}
   m_Children:
   - {fileID: 4480235407624050}
   m_Father: {fileID: 0}
@@ -729,6 +730,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_door: {fileID: 114904366471613192}
 --- !u!114 &114663970584468452
 MonoBehaviour:
@@ -753,6 +755,7 @@ MonoBehaviour:
   m_successItemsToSwitch:
   - {fileID: 114904366471613192}
   m_failItemsToSwitch: []
+  m_atleastOne: 0
 --- !u!114 &114904366471613192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -765,8 +768,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_switchValue: 0
+  m_oneTimeUse: 0
   m_animator: {fileID: 95197996775756766}
-  m_parameterName: open
   m_player: {fileID: 0}
   m_maxRotateAngle: 100
   m_doorAngleSpeed: 100
@@ -783,3 +786,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: -0.7, y: 0.15339398, z: -0.7630019}
+--- !u!208 &208959700108412520
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1560284651137670}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.6, y: 0.06, z: 1.15}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.6, y: 0.039, z: -0.763}
+  m_TimeToStationary: 0.5

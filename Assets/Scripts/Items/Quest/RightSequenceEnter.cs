@@ -9,16 +9,24 @@ public class RightSequenceEnter : Interactable
 
     [SerializeField] private List<SequenceElement> m_listOfObjects;
     [SerializeField] private List<int> m_rightSequence;
+    [SerializeField] private List<Switcher> m_addedItemSwithers;
     [SerializeField] private List<Switcher> m_itemsToSwitch;
+    [SerializeField] private List<Switcher> m_loseItemsToSwitch;
+    [SerializeField] private bool m_checkAfterAdding = true;
+    [SerializeField] private bool m_sequential = false;
 
     protected int m_selectedItem;
-    protected int[] m_currentPressed;
-    protected int m_countOfPressed;
+    protected List<int> m_currentPressed;
     protected bool m_used;
 
     public void PickItem(int id)
     {
+        if (m_selectedItem != INVALID_ID)
+        {
+            m_listOfObjects[m_selectedItem].Turn(false);
+        }
         m_selectedItem = id;
+        m_listOfObjects[id].Turn(true);
     }
 
     public void PressItem(int id)
@@ -28,16 +36,24 @@ public class RightSequenceEnter : Interactable
             return;
         }
 
+        if (m_sequential && id == m_rightSequence[0])
+        {
+            m_currentPressed.Clear();
+        }
+
         m_listOfObjects[id].Turn(true);
-        m_currentPressed[m_countOfPressed] = id;
-        ++m_countOfPressed;
-        if (m_countOfPressed == m_rightSequence.Count)
+        m_currentPressed.Add(id);
+        if (m_checkAfterAdding && m_currentPressed.Count == m_rightSequence.Count)
         {
             CheckRightSequence();
         }
+        else
+        {
+            m_addedItemSwithers.ForEach((Switcher s) => { s.Switch(); });
+        }
     }
 
-    private void CheckRightSequence()
+    public void CheckRightSequence()
     {
         for (int i = 0; i < m_rightSequence.Count; ++i)
         {
@@ -59,7 +75,8 @@ public class RightSequenceEnter : Interactable
 
     private void OnFail()
     {
-        m_countOfPressed = 0;
+        m_currentPressed.Clear();
+        m_loseItemsToSwitch.ForEach((Switcher s) => { s.Switch(); });
         m_listOfObjects.ForEach((SequenceElement se) => { se.Turn(false); });
     }
 
@@ -67,8 +84,7 @@ public class RightSequenceEnter : Interactable
     protected new void Start ()
     {
         base.Start();
-        m_currentPressed = new int[m_rightSequence.Count];
-        m_countOfPressed = 0;
+        m_currentPressed = new List<int>(m_rightSequence.Count);
         m_used = false;
         for (int i = 0; i < m_listOfObjects.Count; ++i)
         {

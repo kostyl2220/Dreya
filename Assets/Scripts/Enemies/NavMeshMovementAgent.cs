@@ -11,6 +11,11 @@ public class NavMeshMovementAgent : MovementAgent {
         return Vector3.Angle(transform.forward, (m_agent.steeringTarget - transform.position));
     }
 
+    public override Vector3 GetDestination()
+    {
+        return m_agent.destination;
+    }
+
     public override float GetRemainingDistance()
     {
         return m_agent.remainingDistance;

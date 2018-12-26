@@ -6,13 +6,12 @@ using UnityEngine;
 public class DoorOpener : Switcher {
 
     [SerializeField] private Animator m_animator;
-    [SerializeField] private string m_parameterName = "open";
     [SerializeField] private GameObject m_player;
     [SerializeField] private float m_maxRotateAngle = 100.0f;
     [SerializeField] private float m_doorAngleSpeed = 100.0f;
     [SerializeField] private float m_doorSinglePush = 3.0f;
 
-    private bool m_locked;
+    private bool m_locked = false;
     private float m_doorRotateAngle;
     private float m_endAngle;
     private float m_rotationTimeLeft;
@@ -31,7 +30,6 @@ public class DoorOpener : Switcher {
             m_animator = GetComponent<Animator>();
         }
 
-        m_locked = false;
         m_doorRotateAngle = (m_switchValue ? m_maxRotateAngle : 0.0f);
         transform.localRotation = Quaternion.Euler(0.0f, 0.0f, m_doorRotateAngle);
 	}
