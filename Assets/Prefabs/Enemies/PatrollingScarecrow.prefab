@@ -2459,7 +2459,7 @@ MonoBehaviour:
   m_pathUpdateTime: 0.2
   m_rotationSpeed: 120
   m_passiveFearDamage: 1.5
-  m_contactDamage: 20
+  m_contactDamage: 12
   m_cooldown: 1
   m_contactAttackDistance: 0.35
   m_attackStateName: Attack
@@ -2535,6 +2535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 114713174730700240}
+  m_chasingState: {fileID: 0}
   m_walkRadius:
     min: 2
     max: 5
@@ -2590,6 +2591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_positions:
   - {fileID: 0}
   - {fileID: 0}
@@ -2648,6 +2650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 114667242450359418}
+  m_chasingState: {fileID: 0}
   m_waitTime:
     min: 1
     max: 3
@@ -2705,6 +2708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 114667242450359418}
+  m_chasingState: {fileID: 0}
   m_countOfRotations:
     min: 2
     max: 6

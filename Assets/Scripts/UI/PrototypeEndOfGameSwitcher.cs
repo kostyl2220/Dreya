@@ -10,4 +10,9 @@ public class PrototypeEndOfGameSwitcher : EnableSwitcher {
         Time.timeScale = m_switchValue ? 0.0f : 1.0f;
         base.Switched();
     }
+
+    private void Start()
+    {
+        
+    }
 }

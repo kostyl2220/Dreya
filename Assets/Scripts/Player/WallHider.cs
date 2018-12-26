@@ -14,7 +14,7 @@ public class WallHider : MonoBehaviour {
         RaycastHit hit;
         Ray ray = new Ray(gameObject.transform.position + m_offset, -Vector3.forward);
 
-        if (Physics.Raycast(ray, out hit, m_distance, LayerMask.NameToLayer("Wall")))
+        if (Physics.Raycast(ray, out hit, m_distance))
         {
             WallSwitch sw = hit.collider.gameObject.GetComponent<WallSwitch>();
             if (sw)
@@ -24,9 +24,29 @@ public class WallHider : MonoBehaviour {
                     return;
                 }
 
-                m_currentWallSwitch.SwitchOn();
+                if (m_currentWallSwitch)
+                {
+                    m_currentWallSwitch.SwitchOn();
+                }
+             
                 m_currentWallSwitch = sw;
                 sw.SwitchOff();
+            }
+            else
+            {
+                if (m_currentWallSwitch)
+                {
+                    m_currentWallSwitch.SwitchOn();
+                    m_currentWallSwitch = null;
+                }
+            }
+        }
+        else
+        {
+            if (m_currentWallSwitch)
+            {
+                m_currentWallSwitch.SwitchOn();
+                m_currentWallSwitch = null;
             }
         }
     }

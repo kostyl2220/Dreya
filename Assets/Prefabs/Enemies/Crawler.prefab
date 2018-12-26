@@ -1566,8 +1566,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1108232596106816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.771, y: 1.273, z: -0.63}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 6.310003, y: -1.7270002, z: 16.459}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4377858976051714}
@@ -1757,6 +1757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_countOfRotations:
     min: 2
     max: 6
@@ -1855,15 +1856,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pathUpdateTime: 0.2
-  m_passiveFearDamage: 0.5
+  m_rotationSpeed: 120
+  m_passiveFearDamage: 0
   m_contactDamage: 5
   m_cooldown: 0.8
-  m_contactAttackDistance: 0.3
+  m_contactAttackDistance: 0.45
   m_attackStateName: Attack
   m_anim: {fileID: 95158615950448770}
   m_detector: {fileID: 114931765848578622}
   m_AttackDistance:
-    min: 0.2
+    min: 0.4
     max: 1
 --- !u!114 &114260852076374316
 MonoBehaviour:
@@ -1895,6 +1897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_waitTime:
     min: 1
     max: 2.2
@@ -1973,6 +1976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_walkRadius:
     min: 2
     max: 3
@@ -2022,7 +2026,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.242
   m_Height: 0.7
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}

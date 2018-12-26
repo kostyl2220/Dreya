@@ -2491,6 +2491,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_countOfRotations:
     min: 2
     max: 6
@@ -2525,6 +2526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_waitTime:
     min: 1
     max: 3
@@ -2583,6 +2585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62058f73836388848b7a04f12c656f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_tagGamageName: Any
   m_killOnDeath: 0
   m_maxHP: 12
 --- !u!114 &114783118036762196
@@ -2597,8 +2600,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_pathUpdateTime: 0.2
+  m_rotationSpeed: 120
   m_passiveFearDamage: 1.5
-  m_contactDamage: 20
+  m_contactDamage: 12
   m_cooldown: 1
   m_contactAttackDistance: 0.35
   m_attackStateName: Attack
@@ -2637,6 +2641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_decisionState: {fileID: 0}
+  m_chasingState: {fileID: 0}
   m_walkRadius:
     min: 2
     max: 5
